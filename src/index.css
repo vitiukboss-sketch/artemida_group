@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --color-bg: #242424;
+  --color-surface: #2c2c2c;
+  --color-neon: #ff353d;
+  --color-neon-dim: #ff7378;
+  --color-text: #f7f7f7;
+  --color-muted: #a7a7a7;
+  --color-border: #414141;
+}
+
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  touch-action: manipulation;
+}
+
+button,
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+@media (max-width: 420px) {
+  .site-nav {
+    gap: 0.45rem;
+    padding: max(0.75rem, env(safe-area-inset-top)) 0.75rem 0.75rem;
+  }
+
+  .site-brand {
+    font-size: 0.83rem;
+    letter-spacing: -0.05em !important;
+  }
+
+  .site-nav-actions {
+    gap: 0.4rem;
+  }
+
+  .site-lang-button {
+    gap: 0.2rem;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .site-nav-cta {
+    padding: 0.5rem 0.58rem;
+    font-size: 0.65rem;
+  }
+
+  .site-hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 6.8rem;
+  }
+
+  .site-hero-heading {
+    font-size: clamp(2.05rem, 10.5vw, 2.45rem) !important;
+    letter-spacing: -0.06em !important;
+  }
+
+  .site-hero p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-visual {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    min-height: 198px;
+  }
+
+  .site-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  input,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .site-hero {
+    padding-top: 9rem;
+  }
+
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .site-hero {
+    padding-top: 6.5rem;
+  }
+
+  .site-hero-heading {
+    font-size: clamp(2rem, 5vw, 3.2rem) !important;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .site-hero {
+    padding-left: max(2rem, calc((100vw - 1200px) / 2));
+    padding-right: max(2rem, calc((100vw - 1200px) / 2));
+  }
+}

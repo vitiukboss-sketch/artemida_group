@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to create and manage tasks efficiently by following specified instructions, enhancing productivity and organization for individuals and teams.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
