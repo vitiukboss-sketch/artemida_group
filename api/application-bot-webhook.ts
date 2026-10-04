@@ -157,14 +157,21 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
     const session = await loadSession(chatId)
     if (!session) { await askRole(chatId, message.from); return res.status(200).json({ ok: true }) }
 
-    if (session.step === 'name') {
+    // Telegram can deliver rapid button taps close together. Use the data that is
+    // already present in the session, rather than trusting only the last step label.
+    // This also recovers an application if an earlier write finishes after a later one.
+    const awaitingName = Boolean(session.role && session.platform && !session.name)
+    const awaitingPhone = Boolean(session.name && !session.phone)
+    const awaitingComment = Boolean(session.name && session.phone && session.messenger)
+
+    if (awaitingName) {
       if (messageText.length < 2 || messageText.length > 120) await telegram('sendMessage', { chat_id: chatId, text: 'Пожалуйста, напишите имя от 2 до 120 символов.' })
       else await askPhone(chatId, { ...session, name: messageText })
-    } else if (session.step === 'phone') {
+    } else if (awaitingPhone) {
       const digits = messageText.replace(/\D/g, '')
       if (digits.length < 7 || digits.length > 15) await telegram('sendMessage', { chat_id: chatId, text: 'Проверьте номер: нужно от 7 до 15 цифр.' })
       else await askMessenger(chatId, { ...session, phone: messageText.slice(0, 60) })
-    } else if (session.step === 'comment') {
+    } else if (awaitingComment) {
       await complete(chatId, session, messageText.slice(0, 2000))
     } else {
       await telegram('sendMessage', { chat_id: chatId, text: 'Выберите вариант кнопкой выше или отправьте /start, чтобы начать заново.' })
