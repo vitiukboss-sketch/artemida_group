@@ -14,6 +14,7 @@ type ApplicationSession = {
 
 const sessionPath = (chatId: string) => `telegram/application-sessions/${chatId}.json`
 const roleNames = { taxi: 'Таксист', courier: 'Курьер' }
+const wait = (milliseconds: number) => new Promise(resolve => setTimeout(resolve, milliseconds))
 
 function requestHeader(req: RequestLike, key: string) {
   const value = req.headers?.[key] ?? req.headers?.[key.toLowerCase()]
@@ -40,9 +41,16 @@ async function saveSession(chatId: string, session: ApplicationSession) {
 }
 
 async function loadSession(chatId: string): Promise<ApplicationSession | null> {
-  const result = await get(sessionPath(chatId), { access: 'private' })
-  if (result.statusCode !== 200 || !result.stream) return null
-  try { return JSON.parse(await new Response(result.stream).text()) as ApplicationSession } catch { return null }
+  // A button can be tapped immediately after a message is shown. Blob writes are
+  // durable but can need a brief moment to become readable from another function.
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    const result = await get(sessionPath(chatId), { access: 'private' })
+    if (result.statusCode === 200 && result.stream) {
+      try { return JSON.parse(await new Response(result.stream).text()) as ApplicationSession } catch { /* retry */ }
+    }
+    if (attempt < 3) await wait(200)
+  }
+  return null
 }
 
 async function askRole(chatId: string, user?: TelegramUser) {
