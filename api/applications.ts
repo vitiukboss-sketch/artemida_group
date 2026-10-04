@@ -1,4 +1,4 @@
-import { getAdminIds } from './lib/admins.js'
+import { notifyAdmins } from './lib/application-notifier.js'
 
 type RequestLike = {
   method?: string
@@ -32,37 +32,11 @@ export default async function applications(req: RequestLike, res: ResponseLike) 
 
   if (!name || !phone) return res.status(400).json({ error: 'Name and phone are required' })
 
-  const token = process.env.TELEGRAM_BOT_TOKEN
-  const recipients = await getAdminIds()
-
-  if (!token || recipients.length === 0) {
-    console.error('Telegram environment variables are missing.')
-    return res.status(503).json({ error: 'Delivery is not configured' })
-  }
-
-  const message = [
-    '📨 Новая заявка с сайта',
-    '',
-    `Имя: ${name}`,
-    `Телефон: ${phone}`,
-    `Направление: ${role}`,
-    `Платформа: ${platform}`,
-    `Мессенджер: ${messenger}`,
-    `Комментарий: ${comment}`,
-    `Язык сайта: ${text(body.language, 10) || '—'}`,
-    `Время (UTC): ${text(body.submittedAt, 40) || '—'}`,
-    `Страница: ${text(body.pageUrl, 1000) || '—'}`,
-  ].join('\n')
-
   try {
-    const telegramResponses = await Promise.all(recipients.map(chatId => fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text: message }),
-    })))
-
-    const failed = telegramResponses.find(response => !response.ok)
-    if (failed) throw new Error(`Telegram returned ${failed.status}`)
+    await notifyAdmins({
+      source: 'site', name, phone, role, platform, messenger, comment,
+      language: text(body.language, 10), pageUrl: text(body.pageUrl, 1000),
+    })
     return res.status(200).json({ ok: true })
   } catch (error) {
     console.error('Could not forward application to Telegram:', error)
