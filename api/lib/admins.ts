@@ -28,7 +28,7 @@ function normaliseIds(value: unknown) {
 async function readStoredState(): Promise<AdminState> {
   if (!canUseStorage()) return { ids: [] }
 
-  const result = await get(ADMIN_BLOB_PATH, { access: 'private' })
+  const result = await get(ADMIN_BLOB_PATH, { access: 'private', useCache: false })
   if (result.statusCode !== 200 || !result.stream) return { ids: [] }
 
   try {
@@ -64,6 +64,7 @@ export async function addAdmin(chatId: string) {
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: 'application/json',
+    cacheControlMaxAge: 60,
   })
   return ids
 }

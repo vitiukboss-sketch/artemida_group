@@ -37,7 +37,10 @@ async function telegram(method: string, body: Record<string, unknown>) {
 }
 
 async function saveSession(chatId: string, session: ApplicationSession) {
-  await put(sessionPath(chatId), JSON.stringify(session), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' })
+  await put(sessionPath(chatId), JSON.stringify(session), {
+    access: 'private', addRandomSuffix: false, allowOverwrite: true,
+    contentType: 'application/json', cacheControlMaxAge: 60,
+  })
   // Do not show a button until this state is readable by the next webhook run.
   // Without this brief pause an immediate tap on "Skip" could arrive before
   // the Blob write is visible to another serverless instance.
@@ -48,7 +51,9 @@ async function loadSession(chatId: string): Promise<ApplicationSession | null> {
   // A button can be tapped immediately after a message is shown. Blob writes are
   // durable but can need a brief moment to become readable from another function.
   for (let attempt = 0; attempt < 4; attempt += 1) {
-    const result = await get(sessionPath(chatId), { access: 'private' })
+    // Session data changes on every questionnaire step. CDN caching is correct
+    // for media but unsafe here: its default lifetime is one month.
+    const result = await get(sessionPath(chatId), { access: 'private', useCache: false })
     if (result.statusCode === 200 && result.stream) {
       try { return JSON.parse(await new Response(result.stream).text()) as ApplicationSession } catch { /* retry */ }
     }
