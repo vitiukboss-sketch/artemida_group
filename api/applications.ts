@@ -1,3 +1,5 @@
+import { getAdminIds } from './lib/admins.js'
+
 type RequestLike = {
   method?: string
   body?: unknown
@@ -31,10 +33,7 @@ export default async function applications(req: RequestLike, res: ResponseLike) 
   if (!name || !phone) return res.status(400).json({ error: 'Name and phone are required' })
 
   const token = process.env.TELEGRAM_BOT_TOKEN
-  const recipients = [...new Set([
-    process.env.TELEGRAM_CHAT_ID,
-    ...(process.env.TELEGRAM_CHAT_IDS ?? '').split(','),
-  ].map(value => value?.trim()).filter(Boolean))]
+  const recipients = await getAdminIds()
 
   if (!token || recipients.length === 0) {
     console.error('Telegram environment variables are missing.')
