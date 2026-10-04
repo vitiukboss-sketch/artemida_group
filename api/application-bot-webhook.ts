@@ -125,18 +125,26 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
       const chatId = String(callback.message.chat.id)
       replyChatId = chatId
       const session = await loadSession(chatId)
-      await telegram('answerCallbackQuery', { callback_query_id: callback.id })
+      // Acknowledging an inline button only affects its loading indicator. It must
+      // never prevent the questionnaire itself from progressing.
+      try {
+        await telegram('answerCallbackQuery', { callback_query_id: callback.id })
+      } catch (error) {
+        console.warn('[application-bot] could not acknowledge callback', error)
+      }
       const [, action, ...values] = callback.data.split(':')
       const value = values[0]
       console.log('[application-bot] callback', { chatId, action, values, step: session?.step })
       if (action === 'role' && (value === 'taxi' || value === 'courier')) {
-        await askPlatform(chatId, { ...(session ?? { step: 'role', user: callback.from }), role: value, user: session?.user ?? callback.from })
+        // A new direction always begins a fresh application. Do not retain fields
+        // from a previous attempt that may have been left in storage.
+        await askPlatform(chatId, { step: 'role', role: value, user: callback.from })
       } else if (action === 'platform') {
         const embeddedRole = values.length > 1 ? values[0] : undefined
         const role = embeddedRole === 'taxi' || embeddedRole === 'courier' ? embeddedRole : session?.role
         const platform = values.length > 1 ? values[1] : value
         const valid = Boolean(platform && role && ((role === 'courier' && ['Bolt', 'Uber', 'Glovo', 'Pyszne.pl'].includes(platform)) || (role === 'taxi' && ['Bolt', 'Uber'].includes(platform))))
-        if (valid && role) await askName(chatId, { ...(session ?? { step: 'platform', user: callback.from }), role, platform, user: session?.user ?? callback.from })
+        if (valid && role) await askName(chatId, { step: 'platform', role, platform, user: callback.from })
         else await askRole(chatId, callback.from)
       } else if (action === 'messenger' && session && ['WhatsApp', 'Telegram', 'Viber'].includes(value)) {
         await askComment(chatId, { ...session, messenger: value })
