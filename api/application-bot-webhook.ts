@@ -38,6 +38,10 @@ async function telegram(method: string, body: Record<string, unknown>) {
 
 async function saveSession(chatId: string, session: ApplicationSession) {
   await put(sessionPath(chatId), JSON.stringify(session), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' })
+  // Do not show a button until this state is readable by the next webhook run.
+  // Without this brief pause an immediate tap on "Skip" could arrive before
+  // the Blob write is visible to another serverless instance.
+  await wait(400)
 }
 
 async function loadSession(chatId: string): Promise<ApplicationSession | null> {
@@ -158,6 +162,11 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
         await askComment(chatId, { ...session, messenger: value })
       } else if (action === 'skip-comment' && session) {
         await complete(chatId, session)
+      } else if (action === 'messenger' || action === 'skip-comment') {
+        // Keep the current questionnaire intact when a very fast tap reaches a
+        // fresh function before its storage read is available. The user can tap
+        // the same button again; starting over here would lose their application.
+        await telegram('sendMessage', { chat_id: chatId, text: 'Подождите секунду и нажмите эту кнопку ещё раз — данные анкеты сохраняются.' })
       } else {
         await askRole(chatId, callback.from)
       }
