@@ -132,9 +132,9 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
       if (action === 'role' && (value === 'taxi' || value === 'courier')) {
         await askPlatform(chatId, { ...(session ?? { step: 'role', user: callback.from }), role: value, user: session?.user ?? callback.from })
       } else if (action === 'platform') {
-        const embeddedRole = values[1]
+        const embeddedRole = values.length > 1 ? values[0] : undefined
         const role = embeddedRole === 'taxi' || embeddedRole === 'courier' ? embeddedRole : session?.role
-        const platform = value
+        const platform = values.length > 1 ? values[1] : value
         const valid = Boolean(platform && role && ((role === 'courier' && ['Bolt', 'Uber', 'Glovo', 'Pyszne.pl'].includes(platform)) || (role === 'taxi' && ['Bolt', 'Uber'].includes(platform))))
         if (valid && role) await askName(chatId, { ...(session ?? { step: 'platform', user: callback.from }), role, platform, user: session?.user ?? callback.from })
         else await askRole(chatId, callback.from)
