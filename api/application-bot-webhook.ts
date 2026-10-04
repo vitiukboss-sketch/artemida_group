@@ -61,7 +61,9 @@ async function askPlatform(chatId: string, session: ApplicationSession) {
   await saveSession(chatId, { ...session, step: 'platform' })
   await telegram('sendMessage', {
     chat_id: chatId, text: '2/6. Выберите платформу:',
-    reply_markup: { inline_keyboard: platforms.map(platform => [{ text: platform, callback_data: `application:platform:${platform}` }]) },
+    // Keep the selected role in the button itself. It lets the questionnaire continue
+    // even if a short-lived session read is delayed by storage.
+    reply_markup: { inline_keyboard: platforms.map(platform => [{ text: platform, callback_data: `application:platform:${session.role}:${platform}` }]) },
   })
 }
 
@@ -115,25 +117,41 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
   const secret = process.env.APPLICATION_BOT_WEBHOOK_SECRET
   if (!secret || requestHeader(req, 'x-telegram-bot-api-secret-token') !== secret) return res.status(401).json({ error: 'Unauthorized' })
 
+  let replyChatId: string | undefined
   try {
     const update = req.body ?? {}
     const callback = update.callback_query
     if (callback?.message && callback.data?.startsWith('application:')) {
       const chatId = String(callback.message.chat.id)
+      replyChatId = chatId
       const session = await loadSession(chatId)
-      if (!session) { await askRole(chatId, callback.from); return res.status(200).json({ ok: true }) }
       await telegram('answerCallbackQuery', { callback_query_id: callback.id })
-      const [, action, value] = callback.data.split(':')
-      if (action === 'role' && (value === 'taxi' || value === 'courier')) await askPlatform(chatId, { ...session, role: value })
-      else if (action === 'platform' && value && ((session.role === 'courier' && ['Bolt', 'Uber', 'Glovo', 'Pyszne.pl'].includes(value)) || (session.role === 'taxi' && ['Bolt', 'Uber'].includes(value)))) await askName(chatId, { ...session, platform: value })
-      else if (action === 'messenger' && ['WhatsApp', 'Telegram', 'Viber'].includes(value)) await askComment(chatId, { ...session, messenger: value })
-      else if (action === 'skip-comment') await complete(chatId, session)
+      const [, action, ...values] = callback.data.split(':')
+      const value = values[0]
+      console.log('[application-bot] callback', { chatId, action, values, step: session?.step })
+      if (action === 'role' && (value === 'taxi' || value === 'courier')) {
+        await askPlatform(chatId, { ...(session ?? { step: 'role', user: callback.from }), role: value, user: session?.user ?? callback.from })
+      } else if (action === 'platform') {
+        const embeddedRole = values[1]
+        const role = embeddedRole === 'taxi' || embeddedRole === 'courier' ? embeddedRole : session?.role
+        const platform = value
+        const valid = Boolean(platform && role && ((role === 'courier' && ['Bolt', 'Uber', 'Glovo', 'Pyszne.pl'].includes(platform)) || (role === 'taxi' && ['Bolt', 'Uber'].includes(platform))))
+        if (valid && role) await askName(chatId, { ...(session ?? { step: 'platform', user: callback.from }), role, platform, user: session?.user ?? callback.from })
+        else await askRole(chatId, callback.from)
+      } else if (action === 'messenger' && session && ['WhatsApp', 'Telegram', 'Viber'].includes(value)) {
+        await askComment(chatId, { ...session, messenger: value })
+      } else if (action === 'skip-comment' && session) {
+        await complete(chatId, session)
+      } else {
+        await askRole(chatId, callback.from)
+      }
       return res.status(200).json({ ok: true })
     }
 
     const message = update.message
     if (!message) return res.status(200).json({ ok: true })
     const chatId = String(message.chat.id)
+    replyChatId = chatId
     const messageText = text(message.text)
     if (/^\/(?:start|restart)(?:@\w+)?$/i.test(messageText)) { await askRole(chatId, message.from); return res.status(200).json({ ok: true }) }
     const session = await loadSession(chatId)
@@ -154,6 +172,16 @@ export default async function applicationBotWebhook(req: RequestLike, res: Respo
     return res.status(200).json({ ok: true })
   } catch (error) {
     console.error('Could not handle application-bot update:', error)
+    if (replyChatId) {
+      try {
+        await telegram('sendMessage', {
+          chat_id: replyChatId,
+          text: 'Не удалось обработать этот шаг. Нажмите /start, чтобы продолжить с начала.',
+        })
+      } catch (notificationError) {
+        console.error('Could not send application-bot recovery message:', notificationError)
+      }
+    }
     return res.status(500).json({ error: 'Could not handle application-bot update' })
   }
 }
