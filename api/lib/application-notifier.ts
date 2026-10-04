@@ -45,9 +45,15 @@ export async function notifyAdmins(application: ApplicationDetails) {
   lines.push(`Время (UTC): ${new Date().toISOString()}`)
 
   const message = lines.join('\n')
-  const responses = await Promise.all(recipients.map(chatId => fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: message }),
-  })))
-  const failed = responses.find(response => !response.ok)
-  if (failed) throw new Error(`Telegram returned ${failed.status}`)
+  const results = await Promise.all(recipients.map(async chatId => {
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: chatId, text: message }),
+    })
+    const payload = await response.json().catch(() => null) as { ok?: boolean; description?: string } | null
+    return { chatId, ok: response.ok && payload?.ok === true, reason: payload?.description ?? `HTTP ${response.status}` }
+  }))
+  const delivered = results.filter(result => result.ok)
+  if (delivered.length === 0) throw new Error(`Telegram delivery failed: ${results.map(result => result.reason).join('; ')}`)
+  const failed = results.filter(result => !result.ok)
+  if (failed.length) console.warn('Some Telegram administrators did not receive an application:', failed)
 }

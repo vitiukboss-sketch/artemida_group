@@ -1,6 +1,9 @@
 import { get, put } from '@vercel/blob'
 
 const ADMIN_BLOB_PATH = 'telegram/admins.json'
+// The owner explicitly requested that this administrator always receives applications.
+// Additional recipients are still read from Vercel settings and Blob storage below.
+const DEFAULT_ADMIN_IDS = ['958952358']
 
 type AdminState = {
   ids: string[]
@@ -44,7 +47,7 @@ export async function getAdminIds() {
     // The original administrators must still receive website applications if Blob is temporarily unavailable.
     console.error('Could not read dynamically added Telegram administrators:', error)
   }
-  return [...new Set([...configuredIds(), ...stored.ids])]
+  return [...new Set([...DEFAULT_ADMIN_IDS, ...configuredIds(), ...stored.ids])]
 }
 
 export async function isAdmin(chatId: string) {
