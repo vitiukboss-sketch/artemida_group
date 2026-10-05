@@ -451,18 +451,24 @@ export default function App() {
       </main>
 
       {/* FOOTER */}
-      <footer className="relative z-10 px-6 py-8 text-center text-sm" style={{ color: 'var(--color-muted)', borderTop: '1px solid var(--color-border)' }}>
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-          <span>ARTEMIDA GROUP</span>
-          <span>{t.footer}</span>
-        </div>
-        <address className="mt-4 not-italic leading-relaxed">
-          <div>ul. Gen. Józefa Longina Sowińskiego 46 lok.1c, 40-018 Katowice</div>
-          <div className="mt-1 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-            <a className="hover:text-white" href="mailto:info@artemidagroup.eu">info@artemidagroup.eu</a>
-            <a className="hover:text-white" href="tel:+48795657830">+48 795 657 830</a>
+      <footer className="relative z-10 px-6 py-9 text-center text-sm" style={{ color: 'var(--color-muted)', borderTop: '1px solid var(--color-border)' }}>
+        <div className="mx-auto max-w-3xl space-y-6">
+          <div className="flex flex-col items-center justify-center gap-1.5 sm:flex-row sm:gap-3">
+            <span className="font-semibold tracking-wide text-white">ARTEMIDA GROUP</span>
+            <span className="hidden text-xs sm:inline" aria-hidden="true">•</span>
+            <span>{t.footer}</span>
           </div>
-        </address>
+
+          <div className="mx-auto h-px w-16" style={{ backgroundColor: 'var(--color-border)' }} />
+
+          <address className="not-italic">
+            <p className="mx-auto max-w-xl leading-relaxed">ul. Gen. Józefa Longina Sowińskiego 46 lok.1c, 40-018 Katowice</p>
+            <div className="mt-3 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-5">
+              <a className="transition-colors hover:text-white" href="mailto:info@artemidagroup.eu">info@artemidagroup.eu</a>
+              <a className="transition-colors hover:text-white" href="tel:+48795657830">+48 795 657 830</a>
+            </div>
+          </address>
+        </div>
       </footer>
 
       <style>{`
