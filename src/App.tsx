@@ -61,13 +61,17 @@ export default function App() {
 function Wordmark() {
   return (
     <span className="wordmark" aria-label={COMPANY.brand}>
-      <svg className="wordmark__mark" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M6 27 16 5l10 22" fill="none" stroke="currentColor" strokeWidth="2.4" />
-        <path d="M10.2 19h11.6" stroke="var(--accent)" strokeWidth="2.4" />
-      </svg>
-      ARTEMIDA<span className="wordmark__light">GROUP</span>
+      <img className="wordmark__logo" src="/brand/ag-mark.png" alt="" width="650" height="400" />
+      <span>Artemida <span className="wordmark__light">Group</span></span>
     </span>
   )
+}
+
+/** Wyróżnia fragment nagłówka kolorem marki. */
+function Accent({ text, accent }: { text: string; accent: string }) {
+  const i = accent ? text.indexOf(accent) : -1
+  if (i < 0) return <>{text}</>
+  return <>{text.slice(0, i)}<span className="hero__accent">{accent}</span>{text.slice(i + accent.length)}</>
 }
 
 function Header({ t, lang, onLang, current, darkTop }: { t: Dictionary; lang: Lang; onLang: (lang: Lang) => void; current?: PageKey; darkTop: boolean }) {
@@ -200,7 +204,7 @@ function Home({ t }: { t: Dictionary }) {
         <div className="container">
           <p className="eyebrow eyebrow--light">{t.home.eyebrow}</p>
           <div className="hero__grid">
-            <h1 className="hero__title">{t.home.title}</h1>
+            <h1 className="hero__title"><Accent text={t.home.title} accent={t.home.titleAccent} /></h1>
             <div className="hero__side">
               <p className="hero__lead">{t.home.lead}</p>
               <div className="hero__ctas">

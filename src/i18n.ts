@@ -36,6 +36,7 @@ const pl = {
   home: {
     eyebrow: 'Agencja growth marketingu · Katowice',
     title: 'Twój nowy partner w growth marketingu',
+    titleAccent: 'growth marketingu',
     lead: 'Pomagamy markom B2C i e-commerce rosnąć dzięki danym, treściom kreatywnym i marketingowi na każdym etapie ścieżki klienta.',
     servicesLabel: 'Usługi',
     servicesTitle: 'Wszystko, czego Twoja marka potrzebuje do wzrostu',
@@ -255,6 +256,7 @@ const ru: Dictionary = {
   home: {
     eyebrow: 'Агентство growth-маркетинга · Катовице',
     title: 'Ваш новый партнёр в growth-маркетинге',
+    titleAccent: 'growth-маркетинге',
     lead: 'Помогаем B2C и e-commerce брендам расти с помощью данных, креативного контента и маркетинга на всём пути клиента.',
     servicesLabel: 'Услуги',
     servicesTitle: 'Всё, что нужно вашему бренду для роста',
@@ -472,6 +474,7 @@ const en: Dictionary = {
   home: {
     eyebrow: 'Growth marketing agency · Katowice',
     title: 'Your new growth marketing partner',
+    titleAccent: 'growth marketing',
     lead: 'We help B2C and e-commerce brands grow through data, creative content and marketing across the customer journey.',
     servicesLabel: 'Services',
     servicesTitle: 'Everything your brand needs to grow',
