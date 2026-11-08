@@ -15,6 +15,8 @@ function text(value: unknown, maxLength: number) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : ''
 }
 
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 /** Vercel serverless function. Environment variables never reach the browser. */
 export default async function applications(req: RequestLike, res: ResponseLike) {
   if (req.method !== 'POST') {
@@ -24,18 +26,37 @@ export default async function applications(req: RequestLike, res: ResponseLike) 
 
   const body = (req.body ?? {}) as Record<string, unknown>
   const name = text(body.name, 120)
-  const phone = text(body.phone, 60)
-  const role = text(body.role, 80) || '—'
-  const platform = text(body.platform, 80) || '—'
-  const messenger = text(body.messenger, 40) || '—'
-  const comment = text(body.comment, 2000) || '—'
-
-  if (!name || !phone) return res.status(400).json({ error: 'Name and phone are required' })
+  const language = text(body.language, 10)
+  const pageUrl = text(body.pageUrl, 1000)
 
   try {
+    if (body.type === 'agency') {
+      // Zapytanie ze strony agencji: imię, e-mail i wiadomość są wymagane.
+      const email = text(body.email, 200)
+      const message = text(body.message, 3000)
+      if (!name || !EMAIL.test(email) || !message) return res.status(400).json({ error: 'Name, valid email and message are required' })
+
+      await notifyAdmins({
+        source: 'agency', name, email, message,
+        website: text(body.website, 300) || '—',
+        service: text(body.service, 120) || '—',
+        messenger: text(body.messenger, 40) || '—',
+        handle: text(body.handle, 80) || '—',
+        language, pageUrl,
+      })
+      return res.status(200).json({ ok: true })
+    }
+
+    // Starsze zgłoszenia (kierowcy i kurierzy).
+    const phone = text(body.phone, 60)
+    if (!name || !phone) return res.status(400).json({ error: 'Name and phone are required' })
     await notifyAdmins({
-      source: 'site', name, phone, role, platform, messenger, comment,
-      language: text(body.language, 10), pageUrl: text(body.pageUrl, 1000),
+      source: 'site', name, phone,
+      role: text(body.role, 80) || '—',
+      platform: text(body.platform, 80) || '—',
+      messenger: text(body.messenger, 40) || '—',
+      comment: text(body.comment, 2000) || '—',
+      language, pageUrl,
     })
     return res.status(200).json({ ok: true })
   } catch (error) {

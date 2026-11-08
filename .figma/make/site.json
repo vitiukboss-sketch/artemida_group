@@ -1,7 +1,12 @@
 {
-  "description": "Enables users to create and manage tasks efficiently by following specified instructions, enhancing productivity and organization for individuals and teams.",
+  "title": "Artemida Group: agencja growth marketingu",
+  "description": "Agencja growth marketingu z Katowic: kampanie Google, Meta i TikTok, produkcja wideo, UGC, SEO, UX/UI i strony internetowe dla marek B2C i e-commerce.",
+  "language": "pl",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,

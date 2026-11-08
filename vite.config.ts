@@ -32,9 +32,11 @@ function telegramApplications(token: string | undefined, chatId: string | undefi
           for await (const chunk of req) chunks.push(Buffer.from(chunk))
           const application = JSON.parse(Buffer.concat(chunks).toString('utf8')) as Application
           const name = text(application.name, 120)
-          const phone = text(application.phone, 60)
+          const raw = application as Application & { email?: unknown; message?: unknown }
+          // Strona agencji wysyła e-mail i wiadomość zamiast telefonu i komentarza.
+          const phone = text(application.phone, 60) || text(raw.email, 200)
           const messenger = text(application.messenger, 40) || '—'
-          const comment = text(application.comment, 2000) || '—'
+          const comment = text(application.comment, 2000) || text(raw.message, 3000) || '—'
 
           if (!name || !phone) {
             res.statusCode = 400
