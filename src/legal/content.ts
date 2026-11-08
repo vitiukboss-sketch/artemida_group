@@ -96,7 +96,7 @@ const pl: Record<DocKey, LegalDoc> = {
           'Twoje dane mogą otrzymać wyłącznie podmioty, które pomagają nam prowadzić działalność, w zakresie niezbędnym do realizacji celów opisanych wyżej:',
           {
             list: [
-              'Vercel Inc. (USA): dostawca hostingu strony i infrastruktury formularza;',
+              'Cloudflare, Inc. (USA): dostawca hostingu strony, sieci CDN i infrastruktury formularza;',
               'Telegram FZ-LLC (Zjednoczone Emiraty Arabskie): komunikator, przez który zapytania z formularza są przekazywane naszemu zespołowi;',
               'dostawca komunikatora, który sam wybierzesz do kontaktu (WhatsApp / Meta Platforms Ireland Ltd. lub Telegram FZ-LLC);',
               'podwykonawcy, którzy pomagają nam realizować projekty (np. twórcy treści, montażyści), wyłącznie po zawarciu umowy i w niezbędnym zakresie;',
@@ -110,7 +110,7 @@ const pl: Record<DocKey, LegalDoc> = {
       {
         h: '6. Przekazywanie danych poza Europejski Obszar Gospodarczy',
         body: [
-          'Vercel Inc., Google LLC i Meta Platforms Inc. mogą przetwarzać dane w USA. Przekazanie odbywa się na podstawie decyzji Komisji Europejskiej z 10 lipca 2023 r. w sprawie EU-US Data Privacy Framework (w przypadku podmiotów certyfikowanych) lub standardowych klauzul umownych zatwierdzonych przez Komisję Europejską.',
+          'Cloudflare, Inc., Google LLC i Meta Platforms Inc. mogą przetwarzać dane w USA. Przekazanie odbywa się na podstawie decyzji Komisji Europejskiej z 10 lipca 2023 r. w sprawie EU-US Data Privacy Framework (w przypadku podmiotów certyfikowanych) lub standardowych klauzul umownych zatwierdzonych przez Komisję Europejską.',
           'Telegram FZ-LLC przetwarza dane w Zjednoczonych Emiratach Arabskich, wobec których Komisja Europejska nie wydała decyzji stwierdzającej odpowiedni stopień ochrony. Przekazanie jest niezbędne do podjęcia działań przed zawarciem umowy na Twoje żądanie (art. 49 ust. 1 lit. b RODO). Wiąże się to z ryzykiem, że ochrona danych w tym państwie może być niższa niż w UE.',
           'Kopię zabezpieczeń możesz otrzymać, pisząc na adres podany w punkcie 1.',
         ],
@@ -353,7 +353,7 @@ const ru: Record<DocKey, LegalDoc> = {
           'Ваши данные могут получить только компании, которые помогают нам работать, и только в нужном для описанных целей объёме:',
           {
             list: [
-              'Vercel Inc. (США): хостинг сайта и инфраструктура формы;',
+              'Cloudflare, Inc. (США): хостинг сайта, CDN и инфраструктура формы;',
               'Telegram FZ-LLC (ОАЭ): мессенджер, через который запросы из формы передаются нашей команде;',
               'провайдер мессенджера, который вы сами выбрали для связи (WhatsApp / Meta Platforms Ireland Ltd. или Telegram FZ-LLC);',
               'подрядчики, которые помогают нам выполнять проекты (например, авторы контента, монтажёры), только после заключения договора и в нужном объёме;',
@@ -367,7 +367,7 @@ const ru: Record<DocKey, LegalDoc> = {
       {
         h: '6. Передача данных за пределы Европейской экономической зоны',
         body: [
-          'Vercel Inc., Google LLC и Meta Platforms Inc. могут обрабатывать данные в США. Передача происходит на основании решения Европейской комиссии от 10 июля 2023 г. о EU-US Data Privacy Framework (для сертифицированных компаний) или стандартных договорных условий, утверждённых Европейской комиссией.',
+          'Cloudflare, Inc., Google LLC и Meta Platforms Inc. могут обрабатывать данные в США. Передача происходит на основании решения Европейской комиссии от 10 июля 2023 г. о EU-US Data Privacy Framework (для сертифицированных компаний) или стандартных договорных условий, утверждённых Европейской комиссией.',
           'Telegram FZ-LLC обрабатывает данные в ОАЭ, для которых Европейская комиссия не выносила решения об адекватном уровне защиты. Передача необходима для действий по вашему запросу до заключения договора (ст. 49 п. 1 лит. b GDPR). Есть риск, что защита данных в этой стране ниже, чем в ЕС.',
           'Копию гарантий защиты можно запросить по контактам из пункта 1.',
         ],
@@ -583,7 +583,7 @@ const en: Record<DocKey, LegalDoc> = {
           'Your data may be shared only with entities that help us run our business, and only to the extent necessary for the purposes above:',
           {
             list: [
-              'Vercel Inc. (USA): website hosting and form infrastructure;',
+              'Cloudflare, Inc. (USA): website hosting, CDN and form infrastructure;',
               'Telegram FZ-LLC (United Arab Emirates): messenger used to forward enquiries from the form to our team;',
               'the provider of the messenger you choose for contact (WhatsApp / Meta Platforms Ireland Ltd. or Telegram FZ-LLC);',
               'subcontractors who help us deliver projects (e.g. content creators, editors), only after a contract is signed and to the extent necessary;',
@@ -597,7 +597,7 @@ const en: Record<DocKey, LegalDoc> = {
       {
         h: '6. Transfers outside the European Economic Area',
         body: [
-          'Vercel Inc., Google LLC and Meta Platforms Inc. may process data in the USA. Transfers are based on the European Commission adequacy decision of 10 July 2023 on the EU-US Data Privacy Framework (for certified entities) or on Standard Contractual Clauses approved by the European Commission.',
+          'Cloudflare, Inc., Google LLC and Meta Platforms Inc. may process data in the USA. Transfers are based on the European Commission adequacy decision of 10 July 2023 on the EU-US Data Privacy Framework (for certified entities) or on Standard Contractual Clauses approved by the European Commission.',
           'Telegram FZ-LLC processes data in the United Arab Emirates, for which the European Commission has not issued an adequacy decision. The transfer is necessary for steps taken at your request before entering into a contract (Art. 49(1)(b) GDPR). This involves the risk that data protection in that country may be lower than in the EU.',
           'You can request a copy of the safeguards using the contact details in section 1.',
         ],
