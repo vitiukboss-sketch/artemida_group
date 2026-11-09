@@ -577,3 +577,25 @@ body { background: linear-gradient(160deg, #101321 0%, #111527 52%, #1a1d38 100%
 .steps__item, .steps__item + .steps__item, .steps--4 .steps__item:nth-child(3) { border-left: 0; border-bottom: 0; }
 .footer { border-top: 0; }
 .header--solid { border-bottom-color: transparent; }
+
+/* Telefon: ciaśniejsze odstępy */
+@media (max-width: 640px) {
+  .hero { padding-top: calc(var(--header-h) + 2rem); padding-bottom: 2rem; }
+  .hero--page { padding-bottom: 2rem; }
+  .hero__grid { gap: 1.5rem; }
+  .ticker { margin-top: 2rem; padding-top: 0.75rem; }
+  .section { padding: 2.75rem 0; }
+  .section--flush-top { padding-top: 1.5rem; }
+  .section-head { margin-bottom: 1.5rem; }
+  .section__more { margin-top: 1.5rem; }
+  .cta-band { padding: 2.75rem 0; }
+  .legal { padding-top: calc(var(--header-h) + 1.75rem); padding-bottom: 3rem; }
+  .footer { padding-top: 2.5rem; }
+  .footer__bottom { margin-top: 2rem; }
+  .footer__grid { gap: 1.75rem; }
+  .service-list__item { padding: 1.1rem 0; }
+  .steps__item { padding: 1rem 0 1.25rem; }
+  .case, .plan, .site-card, .apply__panel { padding: 1.25rem; }
+  .case__stats { padding-top: 1rem; gap: 1.5rem; }
+  .founder__num { font-size: 4.5rem; }
+}
