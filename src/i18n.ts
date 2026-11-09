@@ -94,9 +94,8 @@ const pl = {
   portfolio: {
     label: 'Portfolio',
     title: 'Wybrane realizacje',
-    lead: 'Kampanie, produkty cyfrowe i projekty dla marek, z którymi pracowaliśmy.',
+    lead: 'Kampanie wzrostowe i produkcja wideo dla marek, z którymi pracowaliśmy.',
     campaignsLabel: 'Kampanie wzrostowe',
-    websitesLabel: 'Strony i e-commerce',
     campaigns: [
       {
         tag: 'Produkcja wideo · TikTok',
@@ -110,11 +109,6 @@ const pl = {
         text: 'Stworzyliśmy miesięczną serię na TikToku z wyrazistymi postaciami i twórcą, która zbudowała rozpoznawalność marki kantoru.',
         stats: [{ value: '4,2M', label: 'wyświetleń' }, { value: '+14K', label: 'obserwujących' }, { value: '263K', label: 'polubień' }],
       },
-    ],
-    websites: [
-      { tag: 'Strona · wnętrza', title: 'AURUM Interior', text: 'Strona studia projektowania wnętrz w Barcelonie: projekt, wykończenie, dobór mebli i nadzór autorski w jednym miejscu.', chips: ['Projektowanie wnętrz', 'Barcelona', 'Pełny cykl'] },
-      { tag: 'E-commerce · łazienki', title: 'Lumen Bath Co.', text: 'Elegancki sklep internetowy z armaturą łazienkową, płytkami i kamieniem klasy premium.', chips: ['E-commerce', 'UX produktu', 'Premium'] },
-      { tag: 'E-commerce · suplementy', title: 'NL International', text: 'Strona produktu DrainEffect Low Carb Green wspierająca sprzedaż: skład, opinie, FAQ i szybki zakup przez WhatsApp.', chips: ['D2C', 'Landing produktowy', 'WhatsApp'] },
     ],
   },
 
@@ -314,9 +308,8 @@ const ru: Dictionary = {
   portfolio: {
     label: 'Портфолио',
     title: 'Избранные работы',
-    lead: 'Кампании, цифровые продукты и проекты для брендов, с которыми мы работали.',
+    lead: 'Кампании роста и видеопродакшн для брендов, с которыми мы работали.',
     campaignsLabel: 'Кампании роста',
-    websitesLabel: 'Сайты и e-commerce',
     campaigns: [
       {
         tag: 'Видеопродакшн · TikTok',
@@ -330,11 +323,6 @@ const ru: Dictionary = {
         text: 'Сделали месячную серию в TikTok с запоминающимися персонажами и автором, чтобы построить узнаваемость бренда обменника.',
         stats: [{ value: '4,2M', label: 'просмотров' }, { value: '+14K', label: 'подписчиков' }, { value: '263K', label: 'лайков' }],
       },
-    ],
-    websites: [
-      { tag: 'Сайт · интерьеры', title: 'AURUM Interior', text: 'Сайт студии дизайна интерьеров в Барселоне: проект, ремонт, подбор мебели и авторский надзор в одном месте.', chips: ['Дизайн интерьера', 'Барселона', 'Полный цикл'] },
-      { tag: 'E-commerce · ванные', title: 'Lumen Bath Co.', text: 'Изящный интернет-магазин премиальной сантехники, смесителей, плитки и камня.', chips: ['E-commerce', 'UX продукта', 'Премиум'] },
-      { tag: 'E-commerce · нутрициология', title: 'NL International', text: 'Продуктовая страница DrainEffect Low Carb Green для продаж: состав, отзывы, FAQ и быстрый заказ через WhatsApp.', chips: ['D2C', 'Продуктовый лендинг', 'WhatsApp'] },
     ],
   },
 
@@ -532,9 +520,8 @@ const en: Dictionary = {
   portfolio: {
     label: 'Portfolio',
     title: 'Selected work',
-    lead: 'Campaigns, digital products and brand work from Artemida Group.',
+    lead: 'Growth campaigns and video production for the brands we work with.',
     campaignsLabel: 'Growth campaigns',
-    websitesLabel: 'Websites & e-commerce',
     campaigns: [
       {
         tag: 'Video production · TikTok',
@@ -548,11 +535,6 @@ const en: Dictionary = {
         text: 'We created a month-long TikTok series featuring distinctive characters and a creator to build recognition for a currency exchange brand.',
         stats: [{ value: '4.2M', label: 'views' }, { value: '+14K', label: 'followers' }, { value: '263K', label: 'likes' }],
       },
-    ],
-    websites: [
-      { tag: 'Web development · interiors', title: 'AURUM Interior', text: 'A website for a full-service interior design studio in Barcelona, bringing together design, fit-out, furniture sourcing and on-site supervision.', chips: ['Interior design', 'Barcelona', 'Full cycle'] },
-      { tag: 'E-commerce · bathroom', title: 'Lumen Bath Co.', text: 'A refined online storefront for premium bathroom fixtures, brassware, tiles and stone.', chips: ['E-commerce', 'Product UX', 'Premium'] },
-      { tag: 'E-commerce · nutrition', title: 'NL International', text: 'A product page for DrainEffect Low Carb Green built to sell, with ingredients, reviews, FAQs and a quick path to purchase through WhatsApp.', chips: ['D2C', 'Product landing', 'WhatsApp'] },
     ],
   },
 

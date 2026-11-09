@@ -366,22 +366,6 @@ function Portfolio({ t }: { t: Dictionary }) {
           <CaseGrid t={t} />
         </div>
       </section>
-      <section className="section">
-        <div className="container">
-          <SectionHead index="02" label={p.websitesLabel} title={p.websitesLabel} />
-          <div className="sites">
-            {p.websites.map((site, i) => (
-              <article key={site.title} className="site-card">
-                <span className="tile__num">{String(i + 3).padStart(2, '0')}</span>
-                <p className="site-card__tag">{site.tag}</p>
-                <h3 className="site-card__title">{site.title}</h3>
-                <p className="tile__text">{site.text}</p>
-                <ul className="chips">{site.chips.map(chip => <li key={chip}>{chip}</li>)}</ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
       <CtaBand t={t} />
     </>
   )
