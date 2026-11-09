@@ -569,3 +569,11 @@ body { background: linear-gradient(160deg, #101321 0%, #111527 52%, #1a1d38 100%
 .cookie { background: #151a2e; border-color: #3a405b; border-radius: 24px; }
 .switch:checked { background: var(--lime); }
 .switch:checked::after { background: var(--navy); }
+
+/* Czystszy wygląd: bez dekoracyjnych linii (siatka w hero, kreski przy etykietach, separatory sekcji) */
+.hero::before { display: none; }
+.eyebrow__index::after { display: none; }
+.ticker, .cta-band, .steps, .service-list, .founder__stat, .legal__related { border-top: 0; }
+.steps__item, .steps__item + .steps__item, .steps--4 .steps__item:nth-child(3) { border-left: 0; border-bottom: 0; }
+.footer { border-top: 0; }
+.header--solid { border-bottom-color: transparent; }
