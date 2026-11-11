@@ -627,3 +627,10 @@ textarea.input { min-height: 8.5rem; resize: vertical; }
 @media (max-width: 640px) { .field__label { white-space: normal; } }
 .choices--3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 640px) { .choice { padding: 0 0.4rem; font-size: 0.85rem; } }
+.apply--solo { display: block; }
+.apply--solo .apply__panel { max-width: 46rem; margin: 0 auto; }
+
+/* Menu mobilne: Safari (iOS) traktuje -webkit-backdrop-filter jako blok zawierający dla position:fixed */
+.header.header--open { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--navy); transition: none; }
+.mobile-menu { height: calc(100dvh - var(--header-h) - env(safe-area-inset-top)); bottom: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+html:has(.header--open) { overflow: hidden; }

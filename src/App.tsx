@@ -509,16 +509,7 @@ function Contact({ t, lang }: { t: Dictionary; lang: Lang }) {
     <>
       <PageHero label={c.label} title={c.title} lead={c.lead} />
       <section className="section section--dark section--flush-top">
-        <div className="container apply">
-          <div className="apply__intro">
-            <p className="eyebrow eyebrow--light">{c.directLabel}</p>
-            <dl className="direct">
-              <div><dt>{c.write}</dt><dd><a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></dd></div>
-              <div><dt>{c.call}</dt><dd><a href={`tel:${COMPANY.phoneHref}`}>{COMPANY.phone}</a></dd></div>
-              <div><dt>{c.visit}</dt><dd className="direct__address">{COMPANY.street}<br />{COMPANY.postalCode} {COMPANY.city}</dd></div>
-            </dl>
-          </div>
-
+        <div className="container apply apply--solo">
           <div className="apply__panel">
             {sent ? (
               <div ref={successRef} tabIndex={-1} className="success" role="status">

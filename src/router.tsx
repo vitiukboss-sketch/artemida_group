@@ -18,7 +18,7 @@ export function navigate(to: string) {
   listeners.forEach(listener => listener())
   const [, hash] = to.split('#')
   if (hash) requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView())
-  else window.scrollTo(0, 0)
+  else window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
 }
 
 export function usePath() {
