@@ -234,14 +234,6 @@ function Home({ t }: { t: Dictionary }) {
         </div>
       </section>
 
-      <section className="section section--dark">
-        <div className="container">
-          <SectionHead index="03" label={t.home.workLabel} title={t.home.workTitle} light />
-          <CaseGrid t={t} />
-          <div className="section__more"><Link to={PAGE_PATHS.portfolio} className="btn btn--outline-light">{t.cta.work}<Arrow /></Link></div>
-        </div>
-      </section>
-
       <CtaBand t={t} />
     </>
   )
