@@ -97,6 +97,7 @@ const pl: Record<DocKey, LegalDoc> = {
           {
             list: [
               'Cloudflare, Inc. (USA): dostawca hostingu strony, sieci CDN i infrastruktury formularza;',
+              'Zoho Corporation B.V. (Holandia): dostawca poczty e-mail w domenie artemidagroup.eu (dane przechowywane w centrach danych w UE), przez którą prowadzimy korespondencję;',
               'Telegram FZ-LLC (Zjednoczone Emiraty Arabskie): komunikator, przez który zapytania z formularza są przekazywane naszemu zespołowi;',
               'dostawca komunikatora, który sam wybierzesz do kontaktu (WhatsApp / Meta Platforms Ireland Ltd. lub Telegram FZ-LLC);',
               'podwykonawcy, którzy pomagają nam realizować projekty (np. twórcy treści, montażyści), wyłącznie po zawarciu umowy i w niezbędnym zakresie;',
@@ -178,7 +179,7 @@ const pl: Record<DocKey, LegalDoc> = {
               ['_fbp', 'Meta Platforms Ireland Ltd.', 'Marketingowe (za zgodą)', 'Pomiar skuteczności reklam (Meta Pixel)', '3 miesiące'],
             ],
           },
-          'Cookies analityczne i marketingowe są aktywne tylko wtedy, gdy dane narzędzie jest włączone na stronie i wyraziłeś na nie zgodę.',
+          'Cookies analityczne i marketingowe są aktywne tylko wtedy, gdy dane narzędzie jest włączone na stronie i wyraziłeś na nie zgodę. Obecnie Google Analytics ani Meta Pixel nie są włączone, więc strona używa wyłącznie niezbędnych cookies. Jeśli je włączymy, zaktualizujemy tę politykę i zadziałają one tylko po Twojej zgodzie.',
         ],
       },
       {
@@ -354,6 +355,7 @@ const ru: Record<DocKey, LegalDoc> = {
           {
             list: [
               'Cloudflare, Inc. (США): хостинг сайта, CDN и инфраструктура формы;',
+              'Zoho Corporation B.V. (Нидерланды): почтовый сервис для домена artemidagroup.eu (данные хранятся в дата-центрах в ЕС), через который мы ведём переписку;',
               'Telegram FZ-LLC (ОАЭ): мессенджер, через который запросы из формы передаются нашей команде;',
               'провайдер мессенджера, который вы сами выбрали для связи (WhatsApp / Meta Platforms Ireland Ltd. или Telegram FZ-LLC);',
               'подрядчики, которые помогают нам выполнять проекты (например, авторы контента, монтажёры), только после заключения договора и в нужном объёме;',
@@ -430,7 +432,7 @@ const ru: Record<DocKey, LegalDoc> = {
               ['_fbp', 'Meta Platforms Ireland Ltd.', 'Маркетинговые (с согласия)', 'Измерение эффективности рекламы (Meta Pixel)', '3 месяца'],
             ],
           },
-          'Аналитические и маркетинговые cookies работают, только если инструмент подключён на сайте и вы дали на него согласие.',
+          'Аналитические и маркетинговые cookies работают, только если инструмент подключён на сайте и вы дали на него согласие. Сейчас Google Analytics и Meta Pixel не подключены, поэтому сайт использует только необходимые cookies. Если мы их подключим, мы обновим эту политику, и они будут работать только после вашего согласия.',
         ],
       },
       {
@@ -584,6 +586,7 @@ const en: Record<DocKey, LegalDoc> = {
           {
             list: [
               'Cloudflare, Inc. (USA): website hosting, CDN and form infrastructure;',
+              'Zoho Corporation B.V. (Netherlands): e-mail provider for the artemidagroup.eu domain (data stored in EU data centres), which we use for correspondence;',
               'Telegram FZ-LLC (United Arab Emirates): messenger used to forward enquiries from the form to our team;',
               'the provider of the messenger you choose for contact (WhatsApp / Meta Platforms Ireland Ltd. or Telegram FZ-LLC);',
               'subcontractors who help us deliver projects (e.g. content creators, editors), only after a contract is signed and to the extent necessary;',
@@ -658,7 +661,7 @@ const en: Record<DocKey, LegalDoc> = {
               ['_fbp', 'Meta Platforms Ireland Ltd.', 'Marketing (with consent)', 'Ad performance measurement (Meta Pixel)', '3 months'],
             ],
           },
-          'Analytics and marketing cookies are active only if the tool is enabled on the site and you have consented to it.',
+          'Analytics and marketing cookies are active only if the tool is enabled on the site and you have consented to it. Google Analytics and Meta Pixel are currently not enabled, so the site uses essential cookies only. If we enable them, we will update this policy and they will run only after your consent.',
         ],
       },
       {

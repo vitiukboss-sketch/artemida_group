@@ -40,7 +40,7 @@ export const COMPANY = {
 export const COMPANY_ADDRESS = `${COMPANY.street}, ${COMPANY.postalCode} ${COMPANY.city}`
 
 /** Data wejścia w życie dokumentów prawnych. Zmieniaj przy każdej istotnej zmianie treści. */
-export const LEGAL_UPDATED = '2026-11-08'
+export const LEGAL_UPDATED = '2026-11-13'
 
 /** Wersja polityki cookies. Zmiana wersji ponownie wyświetla baner zgody wszystkim odwiedzającym. */
 export const CONSENT_VERSION = 1

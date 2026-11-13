@@ -101,7 +101,7 @@ const pl = {
         tag: 'Produkcja wideo · TikTok',
         title: 'Od zera do 2 mln wyświetleń w miesiąc',
         text: 'Uruchomiliśmy konto marki lodów na TikToku z nostalgicznymi krótkimi filmami i wyrazistymi postaciami. Pierwszy film przyniósł ponad 9 000 obserwujących z grupy docelowej.',
-        stats: [{ value: '2M', label: 'wyświetleń' }, { value: '+14K', label: 'obserwujących' }, { value: '105K', label: 'polubień' }],
+        stats: [{ value: '2M', label: 'wyświetleń' }, { value: '+17K', label: 'obserwujących' }, { value: '105K', label: 'polubień' }],
       },
       {
         tag: 'Produkcja wideo · SMM',
@@ -124,7 +124,7 @@ const pl = {
     who: 'Dla kogo',
     how: 'Jak to działa',
     plans: [
-      { title: 'Audyt reklam', price: 169, who: 'Dla marek, które chcą ocenić efektywność obecnych kampanii.', how: 'Sprawdzamy strukturę kampanii, śledzenie konwersji, wyniki i budżety, a potem wskazujemy, co można poprawić.' },
+      { title: 'Audyt reklam', price: 169, oneOff: true, who: 'Dla marek, które chcą ocenić efektywność obecnych kampanii.', how: 'Sprawdzamy strukturę kampanii, śledzenie konwersji, wyniki i budżety, a potem wskazujemy, co można poprawić.' },
       { title: 'Plan Starter', price: 179, who: 'Dla mniejszych sklepów, które zaczynają z reklamą płatną i testują pierwszy budżet.', how: 'Stała miesięczna opłata obejmuje jeden kanał i zakres kampanii dopasowany do wielkości konta.' },
       { title: 'Plan Scaling', price: 299, who: 'Dla firm, które przetestowały reklamę płatną i są gotowe zwiększyć skalę i budżet.', how: 'Rozszerzamy testy i optymalizację wraz ze wzrostem budżetu. Ostateczny zakres i cenę ustalamy w ofercie.' },
     ],
@@ -316,7 +316,7 @@ const ru: Dictionary = {
         tag: 'Видеопродакшн · TikTok',
         title: 'С нуля до 2 млн просмотров за месяц',
         text: 'Запустили TikTok-аккаунт бренда мороженого с ностальгическими короткими видео и запоминающимися персонажами. Первое видео принесло более 9 000 подписчиков из целевой аудитории.',
-        stats: [{ value: '2M', label: 'просмотров' }, { value: '+14K', label: 'подписчиков' }, { value: '105K', label: 'лайков' }],
+        stats: [{ value: '2M', label: 'просмотров' }, { value: '+17K', label: 'подписчиков' }, { value: '105K', label: 'лайков' }],
       },
       {
         tag: 'Видеопродакшн · SMM',
@@ -339,7 +339,7 @@ const ru: Dictionary = {
     who: 'Для кого',
     how: 'Как это работает',
     plans: [
-      { title: 'Аудит рекламы', price: 169, who: 'Для брендов, которые хотят оценить эффективность текущих кампаний.', how: 'Проверяем структуру кампаний, отслеживание конверсий, результаты и бюджеты, затем показываем, что можно улучшить.' },
+      { title: 'Аудит рекламы', price: 169, oneOff: true, who: 'Для брендов, которые хотят оценить эффективность текущих кампаний.', how: 'Проверяем структуру кампаний, отслеживание конверсий, результаты и бюджеты, затем показываем, что можно улучшить.' },
       { title: 'План Starter', price: 179, who: 'Для небольших магазинов, которые начинают с платной рекламы и тестируют первый бюджет.', how: 'Фиксированная ежемесячная оплата покрывает один канал и объём кампаний под размер аккаунта.' },
       { title: 'План Scaling', price: 299, who: 'Для компаний, которые уже протестировали рекламу и готовы увеличить масштаб и бюджет.', how: 'Расширяем тесты и оптимизацию по мере роста бюджета. Итоговый объём и стоимость фиксируем в предложении.' },
     ],
@@ -529,7 +529,7 @@ const en: Dictionary = {
         tag: 'Video production · TikTok',
         title: 'From zero to 2M views in a month',
         text: 'We launched an ice cream brand’s TikTok account with nostalgic short videos and distinctive characters. The first video attracted over 9,000 followers from the target audience.',
-        stats: [{ value: '2M', label: 'views' }, { value: '+14K', label: 'followers' }, { value: '105K', label: 'likes' }],
+        stats: [{ value: '2M', label: 'views' }, { value: '+17K', label: 'followers' }, { value: '105K', label: 'likes' }],
       },
       {
         tag: 'Video production · SMM',
@@ -552,7 +552,7 @@ const en: Dictionary = {
     who: 'Who is it for',
     how: 'How it works',
     plans: [
-      { title: 'Ads audit', price: 169, who: 'For brands that want to assess the performance of their existing campaigns.', how: 'We review campaign structure, conversion tracking, results and budgets, then identify what can be improved.' },
+      { title: 'Ads audit', price: 169, oneOff: true, who: 'For brands that want to assess the performance of their existing campaigns.', how: 'We review campaign structure, conversion tracking, results and budgets, then identify what can be improved.' },
       { title: 'Starter plan', price: 179, who: 'For smaller e-commerce brands starting with paid advertising and testing an initial budget.', how: 'A predictable monthly fee covers one channel and a campaign scope suited to the size of the account.' },
       { title: 'Scaling plan', price: 299, who: 'For businesses that have tested paid advertising and are ready to increase activity and budget.', how: 'We expand testing and optimisation as your budget grows. The final scope and fee are agreed in our proposal.' },
     ],

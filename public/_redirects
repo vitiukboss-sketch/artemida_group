@@ -1,0 +1,19 @@
+# Znane strony aplikacji (SPA) – serwowane z index.html; wszystko inne zwraca 404.html z kodem 404
+/uslugi / 200
+/uslugi/ / 200
+/produkcja / 200
+/produkcja/ / 200
+/portfolio / 200
+/portfolio/ / 200
+/cennik / 200
+/cennik/ / 200
+/o-nas / 200
+/o-nas/ / 200
+/kontakt / 200
+/kontakt/ / 200
+/polityka-prywatnosci / 200
+/polityka-prywatnosci/ / 200
+/polityka-cookies / 200
+/polityka-cookies/ / 200
+/regulamin / 200
+/regulamin/ / 200

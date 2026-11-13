@@ -377,7 +377,7 @@ function Pricing({ t }: { t: Dictionary }) {
                 <span className="tile__num">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="plan__title">{plan.title}</h3>
                 <p className="plan__price"><span className="plan__from">{p.from}</span> €{plan.price}</p>
-                <p className="plan__plus">{p.plus}</p>
+                {!plan.oneOff && <p className="plan__plus">{p.plus}</p>}
                 <p className="plan__vat">{p.vat}</p>
                 <dl className="plan__details">
                   <dt>{p.who}</dt><dd>{plan.who}</dd>
