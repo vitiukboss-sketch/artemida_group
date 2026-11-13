@@ -5,6 +5,7 @@ import { openCookieSettings, trackLead } from './consent'
 import { DICT, LANGS, PAGE_PATHS, initialLang, rememberLang, type Dictionary, type Lang, type PageKey } from './i18n'
 import { DOC_PATHS, LEGAL, type Block, type DocKey } from './legal/content'
 import { Link, navigate, usePath } from './router'
+import { SEO } from './seo'
 
 const NAV_PAGES: PageKey[] = ['services', 'production', 'portfolio', 'pricing', 'about']
 
@@ -25,7 +26,8 @@ export default function App() {
   useEffect(() => {
     document.documentElement.lang = lang
     const title = doc ? LEGAL[lang][doc].title : page ? t.titles[page] : t.notFound.title
-    document.title = page === 'home' ? title : `${title} · ${COMPANY.brand}`
+    // Po polsku tytuł zgodny z prerenderowanym HTML (SEO); w innych językach tytuł z tłumaczenia.
+    document.title = lang === 'pl' && SEO[path.replace(/\/+$/, '') || '/'] ? SEO[path.replace(/\/+$/, '') || '/'].title : page === 'home' ? title : `${title} · ${COMPANY.brand}`
   }, [lang, page, doc, t])
 
   const changeLang = (next: Lang) => {
@@ -49,7 +51,8 @@ export default function App() {
         {!page && !doc && <NotFound t={t} />}
       </main>
       <Footer t={t} />
-      <CookieBanner t={t} />
+      {/* Baner tylko w przeglądarce: w prerenderowanym HTML nie wiemy, czy zgoda już jest */}
+      {typeof window !== 'undefined' && <CookieBanner t={t} />}
     </>
   )
 }
@@ -449,7 +452,7 @@ type Channel = (typeof CHANNELS)[number]
 function Contact({ t, lang }: { t: Dictionary; lang: Lang }) {
   const c = t.contact
   const initialService = () => {
-    const key = new URLSearchParams(window.location.search).get('service') ?? ''
+    const key = typeof window === 'undefined' ? '' : new URLSearchParams(window.location.search).get('service') ?? ''
     return t.services.items.some(item => item.key === key) ? key : ''
   }
   const empty = { name: '', email: '', website: '', service: initialService(), channel: 'email' as Channel, handle: '', message: '' }

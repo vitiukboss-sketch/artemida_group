@@ -21,8 +21,14 @@ export function navigate(to: string) {
   else window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
 }
 
+// Ścieżka używana przy prerenderingu stron do statycznego HTML (build).
+let serverPath = '/'
+export function setServerPath(path: string) {
+  serverPath = path
+}
+
 export function usePath() {
-  return useSyncExternalStore(subscribe, () => window.location.pathname, () => '/')
+  return useSyncExternalStore(subscribe, () => window.location.pathname, () => serverPath)
 }
 
 export function Link({ to, onClick, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement> & { to: string }) {

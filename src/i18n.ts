@@ -34,7 +34,7 @@ const pl = {
   },
 
   home: {
-    eyebrow: 'Agencja growth marketingu · Katowice',
+    eyebrow: 'Agencja marketingowa · Katowice',
     title: 'Twój nowy partner w growth marketingu',
     titleAccent: 'growth marketingu',
     lead: 'Pomagamy markom B2C i e-commerce rosnąć dzięki danym, treściom kreatywnym i marketingowi na każdym etapie ścieżki klienta.',
@@ -61,7 +61,7 @@ const pl = {
     title: 'Usługi cyfrowe dla rozwoju Twojego biznesu',
     lead: 'Wybierz jedną usługę albo połącz kilka w jednym planie wzrostu.',
     items: [
-      { key: 'paid', short: 'Paid Media', title: 'Paid Media i performance', text: 'Docieramy do właściwych odbiorców dzięki precyzyjnym kampaniom w Google, Meta i TikTok.' },
+      { key: 'paid', short: 'Paid Media', title: 'Paid Media i performance', text: 'Kampanie Meta Ads (Facebook i Instagram), Google Ads i TikTok Ads z precyzyjnym targetowaniem, które docierają do właściwych odbiorców.' },
       { key: 'ux', short: 'UX i UI', title: 'UX/UI i projektowanie produktów', text: 'Intuicyjne interfejsy cyfrowe zaprojektowane wokół potrzeb użytkowników i celów biznesowych.' },
       { key: 'web', short: 'Strony i aplikacje', title: 'Strony internetowe i oprogramowanie', text: 'Szybkie produkty cyfrowe projektowane z myślą o pozyskiwaniu klientów, konwersji i wzroście.' },
       { key: 'seo', short: 'SEO', title: 'Pozycjonowanie (SEO)', text: 'Budujemy trwałą widoczność organiczną i przyciągamy ruch z wyszukiwarki o wysokiej intencji zakupowej.' },

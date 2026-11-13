@@ -1,19 +1,10 @@
-# Znane strony aplikacji (SPA) – serwowane z index.html; wszystko inne zwraca 404.html z kodem 404
-/uslugi / 200
-/uslugi/ / 200
-/produkcja / 200
-/produkcja/ / 200
-/portfolio / 200
-/portfolio/ / 200
-/cennik / 200
-/cennik/ / 200
-/o-nas / 200
-/o-nas/ / 200
-/kontakt / 200
-/kontakt/ / 200
-/polityka-prywatnosci / 200
-/polityka-prywatnosci/ / 200
-/polityka-cookies / 200
-/polityka-cookies/ / 200
-/regulamin / 200
-/regulamin/ / 200
+# Adres ze znakiem / na końcu przekierowujemy na wersję bez niego
+/uslugi/ /uslugi 301
+/produkcja/ /produkcja 301
+/portfolio/ /portfolio 301
+/cennik/ /cennik 301
+/o-nas/ /o-nas 301
+/kontakt/ /kontakt 301
+/polityka-prywatnosci/ /polityka-prywatnosci 301
+/polityka-cookies/ /polityka-cookies 301
+/regulamin/ /regulamin 301
