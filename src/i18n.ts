@@ -663,9 +663,7 @@ export function initialLang(): Lang {
   } catch {
     /* ignore */
   }
-  const browser = (navigator.language || 'pl').slice(0, 2).toLowerCase()
-  if (browser === 'ru' || browser === 'uk' || browser === 'be') return 'ru'
-  if (browser === 'en') return 'en'
+  // Polski zawsze jako język domyślny (także dla robotów wyszukiwarek); inne języki tylko z przełącznika.
   return 'pl'
 }
 
