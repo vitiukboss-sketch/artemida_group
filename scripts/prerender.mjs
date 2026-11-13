@@ -4,11 +4,11 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
 const dist = path.resolve('dist')
-const { render } = await import(pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href)
+const { render, ROUTES } = await import(pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href)
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-const routes = ['/', '/uslugi', '/produkcja', '/portfolio', '/cennik', '/o-nas', '/kontakt', '/polityka-prywatnosci', '/polityka-cookies', '/regulamin']
+const routes = ROUTES
 
 function page(route, { html, seo, siteUrl, jsonLd }, status) {
   let out = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
@@ -32,7 +32,7 @@ function page(route, { html, seo, siteUrl, jsonLd }, status) {
         `<meta property="og:title" content="${esc(seo.title)}">`,
         `<meta property="og:description" content="${esc(seo.description)}">`,
         `<meta property="og:image" content="${siteUrl}/brand/ag-mark.png">`,
-        `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`,
+        ...jsonLd.map(data => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`),
       ]
   return out.replace('</head>', `    ${head.join('\n    ')}\n  </head>`)
 }

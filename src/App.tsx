@@ -6,13 +6,16 @@ import { DICT, LANGS, PAGE_PATHS, initialLang, rememberLang, type Dictionary, ty
 import { DOC_PATHS, LEGAL, type Block, type DocKey } from './legal/content'
 import { Link, navigate, usePath } from './router'
 import { SEO } from './seo'
+import { LANDINGS, LANDING_PATHS, LANDING_SLUGS, type LandingSlug } from './landings'
 
 const NAV_PAGES: PageKey[] = ['services', 'production', 'portfolio', 'pricing', 'about']
 
-function resolve(path: string): { page?: PageKey; doc?: DocKey } {
+function resolve(path: string): { page?: PageKey; doc?: DocKey; landing?: LandingSlug } {
   const clean = path.replace(/\/+$/, '') || '/'
   const page = (Object.keys(PAGE_PATHS) as PageKey[]).find(key => PAGE_PATHS[key] === clean)
   if (page) return { page }
+  const landing = LANDING_SLUGS.find(key => LANDING_PATHS[key] === clean)
+  if (landing) return { landing }
   const doc = (Object.keys(DOC_PATHS) as DocKey[]).find(key => DOC_PATHS[key] === clean)
   return doc ? { doc } : {}
 }
@@ -21,14 +24,14 @@ export default function App() {
   const [lang, setLang] = useState<Lang>(initialLang)
   const path = usePath()
   const t = DICT[lang]
-  const { page, doc } = resolve(path)
+  const { page, doc, landing } = resolve(path)
 
   useEffect(() => {
     document.documentElement.lang = lang
-    const title = doc ? LEGAL[lang][doc].title : page ? t.titles[page] : t.notFound.title
+    const title = doc ? LEGAL[lang][doc].title : landing ? LANDINGS[lang][landing].title : page ? t.titles[page] : t.notFound.title
     // Po polsku tytuł zgodny z prerenderowanym HTML (SEO); w innych językach tytuł z tłumaczenia.
     document.title = lang === 'pl' && SEO[path.replace(/\/+$/, '') || '/'] ? SEO[path.replace(/\/+$/, '') || '/'].title : page === 'home' ? title : `${title} · ${COMPANY.brand}`
-  }, [lang, page, doc, t])
+  }, [lang, page, doc, landing, t, path])
 
   const changeLang = (next: Lang) => {
     setLang(next)
@@ -38,19 +41,20 @@ export default function App() {
   return (
     <>
       <a href="#main" className="skip-link">{t.skip}</a>
-      <Header t={t} lang={lang} onLang={changeLang} current={page} darkTop={page !== undefined} />
+      <Header t={t} lang={lang} onLang={changeLang} current={page} darkTop={page !== undefined || landing !== undefined} />
       <main id="main">
-        {page === 'home' && <Home t={t} />}
-        {page === 'services' && <Services t={t} />}
+        {page === 'home' && <Home t={t} lang={lang} />}
+        {page === 'services' && <Services t={t} lang={lang} />}
         {page === 'production' && <Production t={t} />}
         {page === 'portfolio' && <Portfolio t={t} />}
         {page === 'pricing' && <Pricing t={t} />}
         {page === 'about' && <About t={t} />}
         {page === 'contact' && <Contact t={t} lang={lang} />}
         {doc && <LegalPage lang={lang} t={t} doc={doc} />}
-        {!page && !doc && <NotFound t={t} />}
+        {landing && <LandingPage t={t} lang={lang} slug={landing} />}
+        {!page && !doc && !landing && <NotFound t={t} />}
       </main>
-      <Footer t={t} />
+      <Footer t={t} lang={lang} />
       {/* Baner tylko w przeglądarce: w prerenderowanym HTML nie wiemy, czy zgoda już jest */}
       {typeof window !== 'undefined' && <CookieBanner t={t} />}
     </>
@@ -200,7 +204,7 @@ function CtaBand({ t }: { t: Dictionary }) {
 /* Pages                                                              */
 /* ================================================================== */
 
-function Home({ t }: { t: Dictionary }) {
+function Home({ t, lang }: { t: Dictionary; lang: Lang }) {
   return (
     <>
       <section className="hero">
@@ -225,7 +229,7 @@ function Home({ t }: { t: Dictionary }) {
       <section className="section">
         <div className="container">
           <SectionHead index="01" label={t.home.servicesLabel} title={t.home.servicesTitle} lead={t.home.servicesLead} />
-          <ServiceList t={t} />
+          <ServiceList t={t} lang={lang} />
           <div className="section__more"><Link to={PAGE_PATHS.services} className="btn btn--outline">{t.cta.services}<Arrow /></Link></div>
         </div>
       </section>
@@ -242,7 +246,7 @@ function Home({ t }: { t: Dictionary }) {
   )
 }
 
-function ServiceList({ t, withPricing }: { t: Dictionary; withPricing?: boolean }) {
+function ServiceList({ t, withPricing, lang }: { t: Dictionary; withPricing?: boolean; lang?: Lang }) {
   return (
     <ol className="service-list">
       {t.services.items.map((item, i) => (
@@ -250,6 +254,11 @@ function ServiceList({ t, withPricing }: { t: Dictionary; withPricing?: boolean 
           <span className="service-list__num">{String(i + 1).padStart(2, '0')}</span>
           <h3 className="service-list__title">{item.title}</h3>
           <p className="service-list__text">{item.text}</p>
+          {item.key === 'paid' && lang && (
+            <ul className="service-list__subs">
+              {LANDING_SLUGS.map(slug => <li key={slug}><Link to={LANDING_PATHS[slug]}>{LANDINGS[lang][slug].short}</Link></li>)}
+            </ul>
+          )}
           {withPricing && (
             <Link to={`${PAGE_PATHS.contact}?service=${item.key}`} className="service-list__link">{t.cta.pricing}<Arrow /></Link>
           )}
@@ -293,13 +302,13 @@ function CaseGrid({ t }: { t: Dictionary }) {
   )
 }
 
-function Services({ t }: { t: Dictionary }) {
+function Services({ t, lang }: { t: Dictionary; lang: Lang }) {
   return (
     <>
       <PageHero label={t.services.label} title={t.services.title} lead={t.services.lead} />
       <section className="section">
         <div className="container">
-          <ServiceList t={t} withPricing />
+          <ServiceList t={t} withPricing lang={lang} />
         </div>
       </section>
       <section className="section section--tint">
@@ -657,7 +666,66 @@ function NotFound({ t }: { t: Dictionary }) {
 
 /* ------------------------------------------------------------------ */
 
-function Footer({ t }: { t: Dictionary }) {
+const AD_HEADING: Record<Lang, string> = { pl: 'Reklama', ru: 'Реклама', en: 'Advertising' }
+
+function LandingPage({ t, lang, slug }: { t: Dictionary; lang: Lang; slug: LandingSlug }) {
+  const l = LANDINGS[lang][slug]
+  return (
+    <>
+      <PageHero label={l.label} title={l.title} lead={l.lead}>
+        <Link to={`${PAGE_PATHS.contact}?service=paid`} className="btn btn--accent">{t.cta.discuss}<Arrow /></Link>
+      </PageHero>
+      <section className="section">
+        <div className="container">
+          <SectionHead index="01" label={l.whatLabel} title={l.whatTitle} />
+          <div className="grid-2">
+            {l.what.map((item, i) => (
+              <article key={item.title} className="tile tile--paper">
+                <span className="tile__num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="tile__title">{item.title}</h3>
+                <p className="tile__text">{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section section--tint">
+        <div className="container">
+          <SectionHead index="02" label={l.forLabel} title={l.forTitle} />
+          <ol className="needs needs--large">{l.forList.map(item => <li key={item}>{item}</li>)}</ol>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <SectionHead index="03" label={t.home.processLabel} title={t.home.processTitle} />
+          <Steps items={t.process} />
+        </div>
+      </section>
+      <section className="section section--tint">
+        <div className="container">
+          <SectionHead index="04" label={l.priceLabel} title={l.priceTitle} lead={l.priceText} />
+          <div className="section__more"><Link to={PAGE_PATHS.pricing} className="btn btn--outline">{t.nav.pricing}<Arrow /></Link></div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <SectionHead index="05" label={l.faqLabel} title={l.faqLabel} />
+          <div className="faq">
+            {l.faq.map(item => (
+              <details key={item.q} className="faq__item">
+                <summary className="faq__q">{item.q}</summary>
+                <p className="faq__a">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CtaBand t={t} />
+    </>
+  )
+}
+
+function Footer({ t, lang }: { t: Dictionary; lang: Lang }) {
   const ft = t.footer
   const registry = [
     COMPANY.nip && [ft.nip, COMPANY.nip],
@@ -681,6 +749,12 @@ function Footer({ t }: { t: Dictionary }) {
             <p className="footer__heading">{ft.pages}</p>
             <ul className="footer__list">
               {[...NAV_PAGES, 'contact' as PageKey].map(key => <li key={key}><Link to={PAGE_PATHS[key]}>{t.nav[key]}</Link></li>)}
+            </ul>
+          </div>
+          <div>
+            <p className="footer__heading">{AD_HEADING[lang]}</p>
+            <ul className="footer__list">
+              {LANDING_SLUGS.map(slug => <li key={slug}><Link to={LANDING_PATHS[slug]}>{LANDINGS[lang][slug].short}</Link></li>)}
             </ul>
           </div>
           <div>
