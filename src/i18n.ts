@@ -120,12 +120,13 @@ const pl = {
     channels: 'Google Ads · Meta Ads · TikTok Ads · kampanie omnichannel',
     from: 'od',
     plus: '+ procent od budżetu reklamowego',
+    vat: 'Cena końcowa · zw. z VAT',
     who: 'Dla kogo',
     how: 'Jak to działa',
     plans: [
       { title: 'Audyt reklam', price: 169, who: 'Dla marek, które chcą ocenić efektywność obecnych kampanii.', how: 'Sprawdzamy strukturę kampanii, śledzenie konwersji, wyniki i budżety, a potem wskazujemy, co można poprawić.' },
       { title: 'Plan Starter', price: 179, who: 'Dla mniejszych sklepów, które zaczynają z reklamą płatną i testują pierwszy budżet.', how: 'Stała miesięczna opłata obejmuje jeden kanał i zakres kampanii dopasowany do wielkości konta.' },
-      { title: 'Plan Scaling', price: 179, who: 'Dla firm, które przetestowały reklamę płatną i są gotowe zwiększyć skalę i budżet.', how: 'Rozszerzamy testy i optymalizację wraz ze wzrostem budżetu. Ostateczny zakres i cenę ustalamy w ofercie.' },
+      { title: 'Plan Scaling', price: 299, who: 'Dla firm, które przetestowały reklamę płatną i są gotowe zwiększyć skalę i budżet.', how: 'Rozszerzamy testy i optymalizację wraz ze wzrostem budżetu. Ostateczny zakres i cenę ustalamy w ofercie.' },
     ],
     tailoredLabel: 'Oferta indywidualna',
     tailored: [
@@ -133,7 +134,7 @@ const pl = {
       { title: 'Pozycjonowanie (SEO)', text: 'Podaj adres strony, rynki docelowe i cele, a omówimy zakres dopasowany do Twojego biznesu.', needs: ['Adres strony', 'Rynki docelowe', 'Cele wzrostu'] },
     ],
     needsLabel: 'Czego potrzebujemy',
-    note: 'Ceny w euro, podane jako ceny „od”. Ostateczny zakres i wynagrodzenie ustalamy w indywidualnej ofercie. Informacje na stronie nie stanowią oferty w rozumieniu art. 66 Kodeksu cywilnego.',
+    note: 'Ceny w euro, podane jako ceny „od”. Sprzedawca korzysta ze zwolnienia z VAT na podstawie art. 113 ust. 1 ustawy o VAT, dlatego do podanych kwot nie doliczamy VAT. Ostateczny zakres i wynagrodzenie ustalamy w indywidualnej ofercie. Informacje na stronie nie stanowią oferty w rozumieniu art. 66 Kodeksu cywilnego.',
     help: 'Nie wiesz, co wybrać?',
   },
 
@@ -334,12 +335,13 @@ const ru: Dictionary = {
     channels: 'Google Ads · Meta Ads · TikTok Ads · омниканальные кампании',
     from: 'от',
     plus: '+ процент от рекламного бюджета',
+    vat: 'Итоговая цена · без НДС (освобождение)',
     who: 'Для кого',
     how: 'Как это работает',
     plans: [
       { title: 'Аудит рекламы', price: 169, who: 'Для брендов, которые хотят оценить эффективность текущих кампаний.', how: 'Проверяем структуру кампаний, отслеживание конверсий, результаты и бюджеты, затем показываем, что можно улучшить.' },
       { title: 'План Starter', price: 179, who: 'Для небольших магазинов, которые начинают с платной рекламы и тестируют первый бюджет.', how: 'Фиксированная ежемесячная оплата покрывает один канал и объём кампаний под размер аккаунта.' },
-      { title: 'План Scaling', price: 179, who: 'Для компаний, которые уже протестировали рекламу и готовы увеличить масштаб и бюджет.', how: 'Расширяем тесты и оптимизацию по мере роста бюджета. Итоговый объём и стоимость фиксируем в предложении.' },
+      { title: 'План Scaling', price: 299, who: 'Для компаний, которые уже протестировали рекламу и готовы увеличить масштаб и бюджет.', how: 'Расширяем тесты и оптимизацию по мере роста бюджета. Итоговый объём и стоимость фиксируем в предложении.' },
     ],
     tailoredLabel: 'Индивидуальное предложение',
     tailored: [
@@ -347,7 +349,7 @@ const ru: Dictionary = {
       { title: 'Поисковая оптимизация (SEO)', text: 'Пришлите адрес сайта, целевые рынки и цели, и мы обсудим подходящий объём работ.', needs: ['Адрес сайта', 'Целевые рынки', 'Цели роста'] },
     ],
     needsLabel: 'Что нам нужно знать',
-    note: 'Цены в евро, указаны как цены «от». Итоговый объём и стоимость фиксируются в индивидуальном предложении. Информация на сайте не является офертой в смысле ст. 66 Гражданского кодекса Польши.',
+    note: 'Цены в евро, указаны как цены «от». Продавец освобождён от НДС (VAT) на основании ст. 113 п. 1 польского закона о НДС, поэтому НДС к указанным суммам не добавляется. Итоговый объём и стоимость фиксируются в индивидуальном предложении. Информация на сайте не является офертой в смысле ст. 66 Гражданского кодекса Польши.',
     help: 'Не знаете, что выбрать?',
   },
 
@@ -546,12 +548,13 @@ const en: Dictionary = {
     channels: 'Google Ads · Meta Ads · TikTok Ads · omnichannel campaigns',
     from: 'from',
     plus: '+ a percentage of ad spend',
+    vat: 'Final price · VAT-exempt',
     who: 'Who is it for',
     how: 'How it works',
     plans: [
       { title: 'Ads audit', price: 169, who: 'For brands that want to assess the performance of their existing campaigns.', how: 'We review campaign structure, conversion tracking, results and budgets, then identify what can be improved.' },
       { title: 'Starter plan', price: 179, who: 'For smaller e-commerce brands starting with paid advertising and testing an initial budget.', how: 'A predictable monthly fee covers one channel and a campaign scope suited to the size of the account.' },
-      { title: 'Scaling plan', price: 179, who: 'For businesses that have tested paid advertising and are ready to increase activity and budget.', how: 'We expand testing and optimisation as your budget grows. The final scope and fee are agreed in our proposal.' },
+      { title: 'Scaling plan', price: 299, who: 'For businesses that have tested paid advertising and are ready to increase activity and budget.', how: 'We expand testing and optimisation as your budget grows. The final scope and fee are agreed in our proposal.' },
     ],
     tailoredLabel: 'Tailored proposal',
     tailored: [
@@ -559,7 +562,7 @@ const en: Dictionary = {
       { title: 'Search engine optimisation', text: 'Share your website, target markets and goals to discuss the right scope for your business.', needs: ['Your website', 'Target markets', 'Growth goals'] },
     ],
     needsLabel: 'What we need to know',
-    note: 'Prices in euro, shown as “from” prices. The final scope and fee are set in an individual proposal. Information on this site is not an offer within the meaning of Article 66 of the Polish Civil Code.',
+    note: 'Prices in euro, shown as “from” prices. The seller is exempt from VAT under Article 113(1) of the Polish VAT Act, so no VAT is added to the amounts shown. The final scope and fee are set in an individual proposal. Information on this site is not an offer within the meaning of Article 66 of the Polish Civil Code.',
     help: 'Need help choosing?',
   },
 
