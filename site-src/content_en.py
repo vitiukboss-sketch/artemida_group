@@ -36,8 +36,8 @@ C = {
     'contact': {
         'h': 'Tell us what to aim at',
         'p': 'Tell us what your business does and what you expect from advertising. We reply within one business day and suggest a next step.',
-        'phone': 'Phone', 'office': 'Office', 'office_short': 'ul. Sowińskiego 46/1c, Katowice, Poland',
-        'company': 'Company details', 'map': 'Directions', 'map_link': 'Open in Google Maps',
+        'phone': 'Phone',
+        'company': 'Company details',
     },
     'js': {
         'menu': 'Menu', 'close': 'Close', 'handleTg': 'Telegram username', 'handleWa': 'WhatsApp number', 'handleVb': 'Viber number',
@@ -165,7 +165,7 @@ C = {
     ('Do you make the ad creatives too?', 'Yes. We have our own video and design production, so creatives are made for the specific campaign and tested in several versions.'),
     ('Will you take over campaigns that are already running?', 'Yes. We start with an account audit, then improve the campaign structure, audiences and conversion tracking.'),
     ('Do I have to sign a long contract?', 'No. We agree the scope and length of cooperation in an individual proposal.'),
-    ('Do you only work with businesses in Katowice?', 'No. Our office is in Katowice, but we work with businesses across Poland.'),
+    ('Do you only work with businesses in Katowice?', 'No. We are based in Katowice, but we work with businesses across Poland.'),
 ],
 
 'pages': {
@@ -184,7 +184,7 @@ C = {
         'faq': [
             ('Which service should I start with?', 'Usually with an ad audit or a short call. We look at where your customers are and which channel will pay back fastest, and start there.'),
             ('Can I take just one service?', 'Yes. You can start with one, for example Meta Ads, and add more once you see results.'),
-            ('Do you only work with businesses in Katowice?', 'No. Our office is in Katowice, but we work with businesses across Poland.'),
+            ('Do you only work with businesses in Katowice?', 'No. We are based in Katowice, but we work with businesses across Poland.'),
             ('Which languages do you work in?', 'Polish, English and Russian.'),
         ],
     },

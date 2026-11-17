@@ -36,8 +36,8 @@ C = {
     'contact': {
         'h': 'Powiedz, w co mamy trafić',
         'p': 'Napisz, czym się zajmujesz i czego oczekujesz od reklamy. Odpowiemy w ciągu jednego dnia roboczego i zaproponujemy kolejny krok.',
-        'phone': 'Telefon', 'office': 'Biuro', 'office_short': 'ul. Sowińskiego 46/1c, Katowice',
-        'company': 'Dane firmy', 'map': 'Dojazd', 'map_link': 'Otwórz w Mapach Google',
+        'phone': 'Telefon',
+        'company': 'Dane firmy',
     },
     'js': {
         'menu': 'Menu', 'close': 'Zamknij', 'handleTg': 'Nazwa w Telegramie', 'handleWa': 'Numer WhatsApp', 'handleVb': 'Numer Viber',
@@ -165,7 +165,7 @@ C = {
     ('Czy przygotujecie też kreacje reklamowe?', 'Tak. Mamy własną produkcję wideo i grafik, więc kreacje powstają pod konkretną kampanię i testujemy je w kilku wersjach.'),
     ('Czy przejmiecie kampanie, które już działają?', 'Tak. Zaczynamy od audytu konta, a potem poprawiamy strukturę kampanii, grupy odbiorców i pomiar konwersji.'),
     ('Czy muszę podpisywać długą umowę?', 'Nie. Zakres i okres współpracy ustalamy w indywidualnej ofercie.'),
-    ('Pracujecie tylko z firmami z Katowic?', 'Nie. Biuro mamy w Katowicach, ale pracujemy z firmami z całej Polski.'),
+    ('Pracujecie tylko z firmami z Katowic?', 'Nie. Jesteśmy z Katowic, ale pracujemy z firmami z całej Polski.'),
 ],
 
 'pages': {
@@ -184,7 +184,7 @@ C = {
         'faq': [
             ('Od której usługi zacząć?', 'Najczęściej od audytu reklam albo krótkiej rozmowy. Sprawdzamy, gdzie są Twoi klienci i który kanał da najszybszy zwrot, i od niego zaczynamy.'),
             ('Czy mogę wziąć tylko jedną usługę?', 'Tak. Możesz zacząć od jednej, na przykład kampanii Meta Ads, i dokładać kolejne, gdy zobaczysz wyniki.'),
-            ('Pracujecie tylko z firmami z Katowic?', 'Nie. Biuro mamy w Katowicach, ale pracujemy z firmami z całej Polski.'),
+            ('Pracujecie tylko z firmami z Katowic?', 'Nie. Jesteśmy z Katowic, ale pracujemy z firmami z całej Polski.'),
             ('W jakim języku możemy współpracować?', 'Po polsku, angielsku albo rosyjsku.'),
         ],
     },

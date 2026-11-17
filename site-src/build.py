@@ -114,7 +114,6 @@ def org_node(C):
         'foundingDate': '2026', 'founder': {'@id': BASE + '/#artem-vitiuk'},
         'address': {'@type': 'PostalAddress', 'streetAddress': ORG['street'], 'postalCode': ORG['zip'],
                     'addressLocality': ORG['city'], 'addressRegion': 'śląskie', 'addressCountry': 'PL'},
-        'hasMap': 'https://www.google.com/maps/search/?api=1&query=Sowi%C5%84skiego%2046%2C%2040-018%20Katowice',
         'areaServed': [{'@type': 'City', 'name': 'Katowice'}, {'@type': 'Country', 'name': 'Polska'}],
         'contactPoint': {'@type': 'ContactPoint', 'contactType': 'sales', 'telephone': ORG['tel'],
                          'email': ORG['email'], 'availableLanguage': ['pl', 'ru', 'en']},
@@ -502,8 +501,7 @@ def contact_html(cx, C, as_page=False):
     company = ''
     if as_page:
         company = (f'<div><dt>{e(K["company"])}</dt><dd style="font-size:1rem;font-weight:400;line-height:1.6">'
-                   f'{e(ORG["legal"])}<br>{e(ORG["street"])}<br>{ORG["zip"]} {ORG["city"]}<br>NIP {ORG["nip"]}</dd></div>'
-                   f'<div><dt>{e(K["map"])}</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=Sowi%C5%84skiego%2046%2C%2040-018%20Katowice" rel="noopener">{e(K["map_link"])}</a></dd></div>')
+                   f'{e(ORG["legal"])}<br>{e(ORG["street"])}<br>{ORG["zip"]} {ORG["city"]}<br>NIP {ORG["nip"]}</dd></div>')
     return f'''<section class="section on-dark{' contact--page' if as_page else ''}" id="contact" aria-labelledby="contact-t">
   <div class="wrap">
   {crumbs}
@@ -514,7 +512,6 @@ def contact_html(cx, C, as_page=False):
       <dl class="direct">
         <div><dt>{e(K['phone'])}</dt><dd><a href="tel:{ORG['tel']}">{ORG['phone']}</a></dd></div>
         <div><dt>E-mail</dt><dd><a href="mailto:{ORG['email']}">{ORG['email']}</a></dd></div>
-        <div><dt>{e(K['office'])}</dt><dd>{e(K['office_short'])}</dd></div>
         {company}
       </dl>
     </div>
