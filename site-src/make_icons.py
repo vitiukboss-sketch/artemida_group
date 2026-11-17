@@ -29,7 +29,8 @@ def png(svg, size):
 svg = square()
 open(os.path.join(ST, 'favicon.svg'), 'w', encoding='utf-8').write(svg)
 png(svg, 180).save(os.path.join(ST, 'apple-touch-icon.png'), optimize=True)
-png(svg, 512).save(os.path.join(ST, 'brand', 'logo.png'), optimize=True)
+for name in ('ag-512.png', 'logo.png'):  # ag-512.png: nowa nazwa omija stary cache CDN pod logo.png
+    png(svg, 512).save(os.path.join(ST, 'brand', name), optimize=True)
 png(svg, 192).save(os.path.join(ST, 'icon-192.png'), optimize=True)
 png(svg, 256).save(os.path.join(ST, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
 print('ok')

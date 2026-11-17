@@ -109,7 +109,7 @@ def org_node(C):
     return {
         '@type': 'ProfessionalService', '@id': BASE + '/#firma', 'name': 'Artemida Group',
         'legalName': ORG['legal'], 'description': C['org_desc'], 'url': BASE + '/',
-        'logo': {'@type': 'ImageObject', 'url': BASE + '/brand/logo.png', 'width': 512, 'height': 512}, 'image': BASE + '/og/pl-home.png',
+        'logo': {'@type': 'ImageObject', 'url': BASE + '/brand/ag-512.png', 'width': 512, 'height': 512}, 'image': BASE + '/og/pl-home.png',
         'email': ORG['email'], 'telephone': ORG['tel'], 'taxID': ORG['nip'], 'priceRange': '€€',
         'foundingDate': '2026', 'founder': {'@id': BASE + '/#artem-vitiuk'},
         'address': {'@type': 'PostalAddress', 'streetAddress': ORG['street'], 'postalCode': ORG['zip'],
