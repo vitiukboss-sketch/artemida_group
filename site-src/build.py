@@ -131,7 +131,7 @@ def person_node(C):
 
 
 def website_node():
-    return {'@type': 'WebSite', '@id': BASE + '/#website', 'name': 'Artemida Group', 'alternateName': 'Artemida',
+    return {'@type': 'WebSite', '@id': BASE + '/#website', 'name': 'Artemida Group',
             'url': BASE + '/', 'inLanguage': ['pl-PL', 'ru', 'en'], 'publisher': {'@id': BASE + '/#firma'}}
 
 
@@ -176,7 +176,7 @@ def header(cx, C):
     cta = '#contact' if cx.has_form else cx.href('contact')
     return f'''<header class="top">
   <div class="wrap top__bar">
-    <a class="brand" href="{cx.href('home')}" aria-label="{e(U['home_aria'])}">Artemida <span>Group</span></a>
+    <a class="brand" href="{cx.href('home')}" aria-label="{e(U['home_aria'])}">Artemida Group</a>
     <nav class="nav" aria-label="{e(U['nav_aria'])}"><ul class="nav__list">{items}</ul></nav>
     <div class="langs" aria-label="{e(U['langs_aria'])}">{lang_links(cx)}</div>
     <a class="btn btn--moon top__cta" href="{cta}">{e(U['cta'])}</a>
@@ -219,14 +219,14 @@ def footer(cx, C):
   <div class="wrap">
     <div class="foot__grid">
       <div class="foot__brand">
-        <a class="brand" href="{cx.href('home')}">Artemida <span>Group</span></a>
+        <a class="brand" href="{cx.href('home')}">Artemida Group</a>
         <p class="foot__about">{e(U['foot_about'])}</p>
       </div>
       <nav aria-label="{e(U['foot_services_h'])}"><p class="foot__h">{e(U['foot_services_h'])}</p><ul>{svc}</ul></nav>
       <nav aria-label="{e(U['foot_company_h'])}"><p class="foot__h">{e(U['foot_company_h'])}</p><ul>{comp}</ul></nav>
-      <div>
+      <div class="foot__data">
         <p class="foot__h">{e(U['foot_data_h'])}</p>
-        <address>{e(ORG['legal'])}<br>{e(ORG['street'])}<br>{ORG['zip']} {ORG['city']}<br>NIP {ORG['nip']}<br>
+        <address>{e(ORG['legal'])}<br>{e(ORG['street'])}<br>{ORG['zip']} {ORG['city']}<br>NIP {ORG['nip']}, {e(U['ceidg'])}<br>
           <a href="tel:{ORG['tel']}">{ORG['phone']}</a><br><a href="mailto:{ORG['email']}">{ORG['email']}</a></address>
       </div>
     </div>
@@ -250,7 +250,7 @@ def consent(cx, C):
   </div>
   <div class="consent__btns">
     <button class="btn btn--moon" type="button" data-act="all" data-tools>{e(K['all'])}</button>
-    <button class="btn btn--ghost" type="button" data-act="none" data-tools>{e(K['none_btn'])}</button>
+    <button class="btn btn--moon" type="button" data-act="none" data-tools>{e(K['none_btn'])}</button>
     <button class="btn btn--ghost" type="button" data-act="save" data-tools>{e(K['save'])}</button>
     <button class="btn btn--ghost consent__close" type="button" data-act="close">{e(K['close'])}</button>
   </div>
@@ -620,7 +620,6 @@ def build_service(cx, C):
     body += who_html(P['who_h'], P['who'])
     if P.get('cases'):
         body += cases_html(cx, C)
-    body += process_html(C)
     body += pricebox_html(cx, C, P['price'], P['price_text'], quiet=not P.get('min_price'))
     body += faq_html(C, P['faq'], fog=True, tight=False)
     body += related_html(cx, C, P['related'])

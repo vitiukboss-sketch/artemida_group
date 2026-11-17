@@ -24,12 +24,11 @@ body{width:1200px;height:630px;background:#0F2B25;color:#EDEFD2;font-family:F;po
 .nw{white-space:nowrap}
 .bull{display:inline-block;width:.62em;height:.62em;margin-left:.1em;vertical-align:-.02em}
 .b{position:absolute;left:72px;bottom:60px;font-size:28px;font-stretch:151%%;font-weight:680;letter-spacing:-.02em}
-.b i{font-style:normal;font-weight:380;color:#9BAEA3}
 .u{position:absolute;right:72px;bottom:62px;font-size:24px;color:#9BAEA3}
 </style></head><body>
 <div class="k">%(kicker)s</div>
 <div class="box"><div class="h" id="h">%(title)s</div></div>
-<div class="b">Artemida <i>Group</i></div>
+<div class="b">Artemida Group</div>
 <div class="u">%(url)s</div>
 <script>
 document.fonts.ready.then(()=>{const h=document.getElementById('h'),box=h.parentElement;let s=120;

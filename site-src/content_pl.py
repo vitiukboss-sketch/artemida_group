@@ -11,7 +11,7 @@ C = {
     'foot_services_h': 'Usługi', 'foot_company_h': 'Firma', 'foot_data_h': 'Dane firmy',
     'foot_services': ['meta', 'google', 'tiktok', 'production', 'web', 'seo', 'ai'],
     'foot_company': ['about', 'portfolio', 'pricing', 'contact'],
-    'cookie_settings': 'Ustawienia cookies', 'moon_fallback': 'Księżyc nad Katowicami',
+    'ceidg': 'wpis do CEIDG', 'cookie_settings': 'Ustawienia cookies', 'moon_fallback': 'Księżyc nad Katowicami',
     'all_services': 'Wszystkie usługi', 'all_work': 'Wszystkie realizacje', 'full_pricing': 'Pełny cennik',
     'more_about': 'Więcej o nas', 'related_h': 'Zobacz też', 'faq_h': 'Częste pytania', 'price_h': 'Cena',
     'see_pricing': 'Zobacz cennik', 'quote': 'Zapytaj o wycenę',
@@ -45,7 +45,7 @@ C = {
         'sent': 'Wiadomość wysłana. Odpowiemy w ciągu jednego dnia roboczego.',
         'failed': 'Wiadomość nie dotarła. Napisz na info@artemidagroup.eu albo zadzwoń: +48 795 657 830.',
         'phases': ['nów', 'młody sierp', 'pierwsza kwadra', 'Księżyc przybywa', 'pełnia', 'Księżyc ubywa', 'ostatnia kwadra', 'stary sierp'],
-        'moon': 'Księżyc nad Katowicami: {name}, tarcza oświetlona w {pct}%.', 'full': 'Artemida ma dziś dobry wzrok.',
+        'moon': 'Księżyc nad Katowicami: {name}, tarcza oświetlona w {pct}%.', 'full': '',
     },
     'nf': {
         'title': 'Nie ma takiej strony | Artemida Group', 'h': 'Pudło. Tej strony tu nie ma.',
@@ -139,7 +139,7 @@ C = {
 'founder': {
     'h': 'Kto za tym stoi', 'role': 'Założyciel i strateg',
     'text': [
-        'Artemidę założyłem w 2026 roku, po ponad siedmiu latach w marketingu. Prowadziłem kampanie performance, występowałem na wydarzeniach branżowych w Ukrainie i przeszkoliłem setki marketerów w ramach własnych programów szkoleniowych.',
+        'Założyłem Artemida Group w 2026 roku, po ponad siedmiu latach w marketingu. Prowadziłem kampanie performance, występowałem na wydarzeniach branżowych w Ukrainie i przeszkoliłem setki marketerów w ramach własnych programów szkoleniowych.',
         'Strategię każdego klienta prowadzę osobiście. Zespół kreatywny pilnuje, żeby reklamy chciało się oglądać, a ja pilnuję, żeby się zwracały.',
         'Pracowaliśmy ze sklepami internetowymi, firmami SaaS, projektami Web3 i lokalnymi firmami usługowymi. Rozmawiamy po polsku, angielsku i rosyjsku.',
     ],
@@ -155,7 +155,7 @@ C = {
         ('Produkcja wideo i UGC', 'Podaj formaty, liczbę materiałów i termin, a przygotujemy wycenę.', 'wycena indywidualna', '', True),
         ('Strony, SEO i automatyzacje', 'Wyceniamy po krótkiej rozmowie o celach i zakresie prac.', 'wycena indywidualna', '', True),
     ],
-    'note': 'Ceny w euro. Sprzedawca korzysta ze zwolnienia z VAT na podstawie art. 113 ust. 1 ustawy o VAT, dlatego nie doliczamy VAT. Budżet reklamowy płacisz bezpośrednio platformie. Informacje na stronie nie stanowią oferty w rozumieniu art. 66 Kodeksu cywilnego.',
+    'note': 'Oferta jest skierowana do przedsiębiorców. Ceny w euro. Sprzedawca korzysta ze zwolnienia z VAT na podstawie art. 113 ust. 1 ustawy o VAT, dlatego nie doliczamy VAT. Budżet reklamowy płacisz bezpośrednio platformie. Informacje na stronie nie stanowią oferty w rozumieniu art. 66 Kodeksu cywilnego.',
 },
 
 'faq_general': [
@@ -341,7 +341,7 @@ C = {
         'related': ['seo', 'meta', 'ai'],
     },
     'seo': {
-        'title': 'Pozycjonowanie stron Katowice | SEO dla firm | Artemida',
+        'title': 'Pozycjonowanie stron Katowice | SEO | Artemida Group',
         'desc': 'Pozycjonowanie stron w Google: audyt SEO, SEO techniczne, treści i SEO lokalne. Ruch z wyszukiwarki bez opłat za kliknięcie. Agencja z Katowic.',
         'og': 'Pozycjonowanie SEO', 'crumb': 'Pozycjonowanie SEO',
         'h1': 'Pozycjonowanie stron w Google', 'service_type': 'Pozycjonowanie stron (SEO)',

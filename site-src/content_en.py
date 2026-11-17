@@ -11,7 +11,7 @@ C = {
     'foot_services_h': 'Services', 'foot_company_h': 'Company', 'foot_data_h': 'Company details',
     'foot_services': ['meta', 'google', 'tiktok', 'production', 'web', 'seo', 'ai'],
     'foot_company': ['about', 'portfolio', 'pricing', 'contact'],
-    'cookie_settings': 'Cookie settings', 'moon_fallback': 'Moon over Katowice',
+    'ceidg': 'registered in CEIDG', 'cookie_settings': 'Cookie settings', 'moon_fallback': 'Moon over Katowice',
     'all_services': 'All services', 'all_work': 'All work', 'full_pricing': 'Full pricing',
     'more_about': 'More about us', 'related_h': 'See also', 'faq_h': 'Common questions', 'price_h': 'Price',
     'see_pricing': 'See pricing', 'quote': 'Ask for a quote',
@@ -45,7 +45,7 @@ C = {
         'sent': 'Message sent. We will reply within one business day.',
         'failed': 'The message did not go through. Email info@artemidagroup.eu or call +48 795 657 830.',
         'phases': ['new moon', 'waxing crescent', 'first quarter', 'waxing gibbous', 'full moon', 'waning gibbous', 'last quarter', 'waning crescent'],
-        'moon': 'Moon over Katowice: {name}, {pct}% of the disc lit.', 'full': 'Artemis has a sharp eye tonight.',
+        'moon': 'Moon over Katowice: {name}, {pct}% of the disc lit.', 'full': '',
     },
     'nf': {
         'title': 'Page not found | Artemida Group', 'h': 'Missed. This page is not here.',
@@ -139,7 +139,7 @@ C = {
 'founder': {
     'h': 'Who is behind it', 'role': 'Founder and strategist',
     'text': [
-        'I founded Artemida in 2026, after more than seven years in marketing. I ran performance campaigns, spoke at industry events in Ukraine and trained hundreds of marketers through my own education programmes.',
+        'I founded Artemida Group in 2026, after more than seven years in marketing. I ran performance campaigns, spoke at industry events in Ukraine and trained hundreds of marketers through my own education programmes.',
         'I lead every client strategy personally. The creative team makes sure people want to watch the ads, and I make sure the ads pay off.',
         "We have worked with online shops, SaaS companies, Web3 projects and local service businesses. We work in Polish, English and Russian.",
     ],
@@ -155,7 +155,7 @@ C = {
         ('Video and UGC production', 'Tell us the formats, number of assets and deadline, and we will send a quote.', 'custom quote', '', True),
         ('Websites, SEO and automation', 'Quoted after a short call about your goals and scope.', 'custom quote', '', True),
     ],
-    'note': 'Prices in euro. The seller is exempt from VAT under Article 113(1) of the Polish VAT Act, so no VAT is added. You pay the ad budget directly to the platform. Information on this site is not an offer within the meaning of Article 66 of the Polish Civil Code.',
+    'note': 'Our services are offered to businesses. Prices in euro. The seller is exempt from VAT under Article 113(1) of the Polish VAT Act, so no VAT is added. You pay the ad budget directly to the platform. Information on this site is not an offer within the meaning of Article 66 of the Polish Civil Code.',
 },
 
 'faq_general': [
@@ -406,7 +406,7 @@ C = {
         'lead': 'Selected campaigns and video series for brands we have worked with.',
     },
     'pricing': {
-        'title': 'Pricing: Meta & Google Ads Management from €179 | Artemida',
+        'title': 'Pricing: Meta & Google Ads from €179 | Artemida Group',
         'desc': 'Ad audit from €169, Meta Ads, Google Ads and TikTok Ads management from €179 per month. Transparent pricing from a marketing agency in Katowice.',
         'og': 'Pricing', 'crumb': 'Pricing', 'h1': 'Pricing',
         'lead': 'Transparent starting prices for paid campaigns. Video production, websites, SEO and automation are quoted individually.',

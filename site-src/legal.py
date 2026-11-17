@@ -4,9 +4,9 @@ O = 'artemidagroup.eu'
 EMAIL = 'info@artemidagroup.eu'
 PHONE = '+48 795 657 830'
 ADDR = 'ul. Gen. Józefa Longina Sowińskiego 46 lok. 1c, 40-018 Katowice'
-CTRL_PL = f'Artem Vitiuk Artemida Group, {ADDR}, NIP: 9542915634'
-CTRL_RU = f'Artem Vitiuk Artemida Group, {ADDR}, NIP: 9542915634'
-CTRL_EN = f'Artem Vitiuk Artemida Group, {ADDR}, NIP (Tax ID): 9542915634'
+CTRL_PL = f'Artem Vitiuk Artemida Group, {ADDR}, NIP: 9542915634, przedsiębiorca wpisany do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG)'
+CTRL_RU = f'Artem Vitiuk Artemida Group, {ADDR}, NIP: 9542915634, предприниматель, зарегистрированный в CEIDG (Центральный реестр хозяйственной деятельности Польши)'
+CTRL_EN = f'Artem Vitiuk Artemida Group, {ADDR}, NIP (Tax ID): 9542915634, a sole trader registered in CEIDG (the Polish Central Register and Information on Economic Activity)'
 
 LEGAL = {
 'pl': {
@@ -84,7 +84,7 @@ LEGAL = {
    {'h': '5. Kontakt', 'body': [f'Pytania dotyczące cookies wyślij na {EMAIL}. Więcej o przetwarzaniu danych przeczytasz w Polityce prywatności.']},
   ]},
  'terms': {
-  'title': 'Regulamin świadczenia usług drogą elektroniczną', 'date': '13 listopada 2026',
+  'title': 'Regulamin świadczenia usług drogą elektroniczną', 'date': '17 listopada 2026',
   'desc': 'Regulamin świadczenia usług drogą elektroniczną na stronie artemidagroup.eu: zasady korzystania ze strony, formularza i składania reklamacji.',
   'intro': f'Regulamin wydany na podstawie art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną. Określa zasady korzystania ze strony {O}.',
   'sections': [
@@ -186,7 +186,7 @@ LEGAL = {
    {'h': '5. Контакт', 'body': [f'Вопросы о cookies присылайте на {EMAIL}. Подробнее об обработке данных читайте в Политике конфиденциальности.']},
   ]},
  'terms': {
-  'title': 'Регламент оказания услуг электронным способом', 'date': '13 ноября 2026',
+  'title': 'Регламент оказания услуг электронным способом', 'date': '17 ноября 2026',
   'desc': 'Регламент оказания услуг электронным способом на сайте artemidagroup.eu: правила пользования сайтом, формой и подачи жалоб.',
   'intro': f'Регламент издан на основании ст. 8 польского закона от 18 июля 2002 г. об оказании услуг электронным способом. Он определяет правила пользования сайтом {O}.',
   'sections': [
@@ -288,7 +288,7 @@ LEGAL = {
    {'h': '5. Contact', 'body': [f'Send questions about cookies to {EMAIL}. For more on data processing, see the Privacy Policy.']},
   ]},
  'terms': {
-  'title': 'Terms of Service', 'date': '13 November 2026',
+  'title': 'Terms of Service', 'date': '17 November 2026',
   'desc': 'Terms of electronic services on artemidagroup.eu: rules for using the website and contact form, technical requirements and complaints.',
   'intro': f'These terms are issued under Article 8 of the Polish Act of 18 July 2002 on Providing Services by Electronic Means. They set out the rules for using {O}.',
   'sections': [

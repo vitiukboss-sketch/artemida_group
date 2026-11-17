@@ -8,7 +8,14 @@ const PIXEL_ID = '';
   const L = JSON.parse(document.getElementById('l10n').textContent);
   const KEY = 'artemida_consent';
   const store = {
-    get() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } },
+    get() {
+      try {
+        const c = JSON.parse(localStorage.getItem(KEY));
+        // zgoda ważna 12 miesięcy (zgodnie z polityką cookies), potem pytamy ponownie
+        if (!c || c.version !== 1 || Date.now() - Date.parse(c.date) > 365 * 864e5) return null;
+        return c;
+      } catch { return null; }
+    },
     set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} }
   };
 
@@ -189,6 +196,6 @@ const PIXEL_ID = '';
     const r = 11, c = 12, rx = r * Math.abs(1 - 2 * k);
     lit.setAttribute('d', `M${c} ${c - r} A${r} ${r} 0 0 ${wax ? 1 : 0} ${c} ${c + r} A${rx} ${r} 0 0 ${(k < .5) === wax ? 0 : 1} ${c} ${c - r}Z`);
     const pct = Math.round(k * 100);
-    txt.textContent = L.moon.replace('{name}', name).replace('{pct}', pct) + (pct > 96 ? ' ' + L.full : '');
+    txt.textContent = L.moon.replace('{name}', name).replace('{pct}', pct) + (pct > 96 && L.full ? ' ' + L.full : '');
   }
 })();
