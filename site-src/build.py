@@ -316,8 +316,10 @@ def page(cx, C, title, desc, body, graph, og_key=None, robots='index, follow, ma
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{e(og_title or title)}">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{cx.asset('favicon.ico')}" sizes="48x48">
 <link rel="icon" href="{cx.asset('favicon.svg')}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{cx.asset('apple-touch-icon.png')}">
+<link rel="manifest" href="{cx.asset('site.webmanifest')}">
 <link rel="preload" href="{cx.asset('fonts/flex-latin.woff2')}" as="font" type="font/woff2" crossorigin>
 {'<link rel="preload" href="' + cx.asset('fonts/flex-cyrillic.woff2') + '" as="font" type="font/woff2" crossorigin>' if lang == 'ru' else ''}
 <link rel="stylesheet" href="{cx.asset(ASSETS['css'])}">
@@ -776,7 +778,7 @@ def main():
         ASSETS[kind] = name
     for d in ['fonts']:
         shutil.copytree(os.path.join(HERE, 'static', d), os.path.join(OUT, d))
-    for f in ['favicon.svg', 'apple-touch-icon.png']:
+    for f in ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'site.webmanifest']:
         shutil.copy(os.path.join(HERE, 'static', f), OUT)
     shutil.copytree(os.path.join(HERE, 'static', 'brand'), os.path.join(OUT, 'brand'))
     n = 0

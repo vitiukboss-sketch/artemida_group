@@ -150,3 +150,5 @@ site/**/*.png -filter -diff -merge binary
 site-src/**/*.png -filter -diff -merge binary
 site/**/*.woff2 -filter -diff -merge binary
 site-src/**/*.woff2 -filter -diff -merge binary
+site/**/*.ico -filter -diff -merge binary
+site-src/**/*.ico -filter -diff -merge binary
