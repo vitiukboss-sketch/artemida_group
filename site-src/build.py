@@ -562,7 +562,7 @@ def build_home(cx, C):
         if i == len(lines) - 1:
             spans += f'<span class="hero__line display">{e(ln)}.</span>'
         else:
-            spans += f'<span class="hero__line display">{e(ln)}</span>'
+            spans += f'<span class="hero__line display">{e(ln)}</span> '
     body = f'''<section class="hero on-dark{' hero--long' if H.get('long') else ''}" aria-label="{e(H['aria'])}">
   <div class="wrap">
     <h1><span class="hero__kicker">{e(H['kicker'])}<span class="sr-only">.</span></span> {spans}</h1>
