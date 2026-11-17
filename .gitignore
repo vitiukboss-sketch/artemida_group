@@ -22,3 +22,8 @@ logs/
 /.plugins/
 /.opencode-skills/
 dist-ssr
+
+# Generator strony
+site-src/preview/
+site-src/dist/
+__pycache__/

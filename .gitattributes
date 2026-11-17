@@ -144,3 +144,9 @@
 *.stl                filter=lfs diff=lfs merge=lfs -text
 *.nc                 filter=lfs diff=lfs merge=lfs -text
 *.mat                filter=lfs diff=lfs merge=lfs -text
+
+# Nowa strona: obrazy jako zwykłe pliki (bez LFS)
+site/**/*.png -filter -diff -merge binary
+site-src/**/*.png -filter -diff -merge binary
+site/**/*.woff2 -filter -diff -merge binary
+site-src/**/*.woff2 -filter -diff -merge binary
